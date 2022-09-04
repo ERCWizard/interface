@@ -1,0 +1,78 @@
+import Image from 'next/image'
+import { arrowUpRight } from 'assets'
+import { twitter, discord, github } from 'assets'
+import { twitterHref, discordHref, githubHref } from 'utils/constants'
+
+const socials = [
+  {
+    id: '01 /',
+    prefix: 'follow on',
+    name: 'github',
+    href: githubHref,
+    image: github,
+    description: 'contribute to the open source code',
+  },
+  {
+    id: '02 /',
+    prefix: 'join',
+    name: 'discord',
+    href: discordHref,
+    image: discord,
+    description: 'talk, chat, hang out, and stay close with the wizards',
+  },
+  {
+    id: '03 /',
+    prefix: 'follow on',
+    name: 'twitter',
+    href: twitterHref,
+    image: twitter,
+    description: 'stay up-to-date with the latest protocol changes',
+  },
+]
+
+const Community = () => {
+  return (
+    <section className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24">
+      <div className="flex flex-col space-y-8 w-full">
+        <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">
+          Community
+        </h2>
+        <p className="uppercase">
+          ask questions, find answers, and share your experience with others.
+          <br />
+          join the erc wizard community.
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-16 my-8">
+        {socials.map((social) => (
+          <div
+            key={social.name}
+            className="flex-1 bg-white text-black p-8 space-y-8"
+          >
+            <div className="bg-black w-16 h-16 flex items-center justify-center">
+              <Image
+                src={social.image}
+                alt={social.name + ' logo'}
+                width={32}
+                height={32}
+              />
+            </div>
+            <p className="text-4xl">{social.name}</p>
+            <p className="uppercase">{social.description}</p>
+            <a
+              className="border border-black text-black font-medium px-4 h-16 flex items-center justify-center uppercase whitespace-nowrap"
+              href="https://app.ercwizard.com"
+            >
+              {social.prefix} {social.name}
+              <span className="ml-2 w-3 h-3 flex items-center">
+                <Image src={arrowUpRight} width={10} height={10} />
+              </span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Community
