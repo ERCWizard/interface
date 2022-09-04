@@ -36,13 +36,13 @@ export default function Section() {
           className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase"
           href="https://app.ercwizard.com"
         >
-          Launch App
+          generate smart contrtact
           <span className="ml-2">
             <Image src={arrowUpRight} width={10} height={10} />
           </span>
         </a>
       </div>
-      <div className="w-full lg:flex-1 bg-white border border-white relative polka-l-b square-r-t">
+      <div className="w-full lg:flex-1 bg-white border border-neutral-900 relative polka-l-b square-r-t">
         <Swiper
           className="h-96 w-full lg:h-[400px] lg:w-[508px] xl:h-[500px] xl:w-[608px] text-xs"
           grabCursor={true}

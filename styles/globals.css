@@ -45,13 +45,15 @@ body {
   background-size: 9px 9px;
 }
 
-.polka-r-t::before {
+.polka-r-l::before {
   position: absolute;
   content: '';
-  width: 100%;
+  width: calc(100% + 4rem);
   height: 100%;
   right: -2rem;
-  top: -2rem;
+  left: -2rem;
+  top: 0;
+  bottom: 0;
   background-color: rgba(229, 229, 247, 0);
   opacity: 1;
   background-image: radial-gradient(
