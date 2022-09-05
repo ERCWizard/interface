@@ -15,7 +15,7 @@ export default function Links() {
     <div className="flex justify-between gap-8 w-full mt-16">
       <a
         href="https://polygonscan.com/"
-        className="border h-12 sm:h-16 flex items-center justify-center"
+        className="border h-12 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out"
       >
         <div className="hidden sm:flex">
           <Image src={polygonLogo} height={32} />
@@ -27,19 +27,19 @@ export default function Links() {
       <div className="flex space-x-8 sm:space-x-12">
         <a
           href={twitterHref}
-          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center"
+          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out"
         >
           <Image src={twitter} width={32} height={32} />
         </a>
         <a
           href={discordHref}
-          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center"
+          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out"
         >
           <Image src={discord} width={32} height={32} />
         </a>
         <a
           href={githubHref}
-          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center"
+          className="border w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out"
         >
           <Image src={github} width={32} height={32} />
         </a>

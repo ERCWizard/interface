@@ -12,17 +12,17 @@ const Header = () => {
           <div className="border border-white w-16 h-16 flex items-center justify-center">
             <Image src={wand} width={32} height={32} />
           </div>
-          <p className="text-2xl sm:text-4xl font-Poppins">ERC Wizard</p>
+          <p className="text-2xl sm:text-3xl font-Poppins">ERC Wizard</p>
         </a>
         <nav>
-          <div className="hidden md:flex items-center space-x-4 uppercase">
+          <div className="hidden md:flex items-center space-x-8 uppercase">
             {navigationMenu.map((el) => (
               <a key={el.name} href={el.href}>
                 {el.name}
               </a>
             ))}
             <a
-              className="bg-white text-black font-medium px-8 h-16 flex items-center justify-center"
+              className="bg-white text-black font-medium px-8 h-16 flex items-center justify-center border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
               href="https://app.ercwizard.com"
             >
               Launch App
