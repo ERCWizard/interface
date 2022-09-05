@@ -5,7 +5,7 @@ import { EffectCreative, Autoplay } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/bundle'
 import 'swiper/css/effect-creative'
-import { erc721Snippet, erc1155Snippet } from 'utils/codeSnippet'
+import { wizardFactory, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 
 export default function Section() {
   return (
@@ -57,7 +57,7 @@ export default function Section() {
             },
           }}
           autoplay={{
-            delay: 2500,
+            delay: 5000,
             disableOnInteraction: false,
             stopOnLastSlide: false,
           }}
@@ -65,13 +65,18 @@ export default function Section() {
           modules={[EffectCreative, Autoplay]}
         >
           <SwiperSlide className="bg-black text-white">
-            <div className="p-4">
-              <pre>{erc721Snippet}</pre>
+            <div className="p-8">
+              <pre>{wizardFactory}</pre>
             </div>
           </SwiperSlide>
           <SwiperSlide className="bg-black text-white">
-            <div className="p-4">
-              <pre>{erc1155Snippet}</pre>
+            <div className="p-8">
+              <pre>{wizardERC721}</pre>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="bg-black text-white">
+            <div className="p-8">
+              <pre>{wizardERC1155}</pre>
             </div>
           </SwiperSlide>
         </Swiper>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { arrowUpRight, deco } from 'assets'
+import { githubHref } from 'utils/constants'
 
 const Details = () => {
   return (
@@ -10,14 +11,18 @@ const Details = () => {
             Details
           </h2>
           <p className="uppercase">
-            supporting erc721 and erc1155 contract generation. create a
-            gas-efficient contract for your project in under a minute. full
-            control ower smart contract no-code price time efficient erc wizard
-            team support
+            create and deploy gas-efficient ready-to-use smart contract without
+            writing a single line of solidity code for your next project in
+            under a minute, and have full control over it.
+          </p>
+          <p className="uppercase">
+            supporting erc-721 and erc-1155 contract generation. developed
+            following the erc standards, and using secure open-source libraries
+            like OpenZeppelin.
           </p>
           <a
             className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
-            href="https://app.ercwizard.com"
+            href={githubHref}
           >
             open-source code github
             <span className="ml-2">

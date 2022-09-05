@@ -1,70 +1,112 @@
-export const erc721Snippet = `import "erc721a/contracts/ERC721A.sol";
+export const wizardFactory = `import "@openzeppelin/contracts/proxy/Clones.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+import "./WizardErrors.sol";
+import "./interfaces/IERC721.sol";
+import "./interfaces/IERC1155.sol";
+
+contract WizardFactory is Ownable, ReentrancyGuard {
+    /// @notice Emitted on createERC721Contract()
+    /// @param createdContract Address of deployed Contract
+    /// @param name Contract (ERC721) name
+    /// @param symbol Contract (ERC721) symbol
+    /// @param cost Mint cost
+    /// @param maxSupply Contract (ERC721) maxSupply
+    /// @param maxMintAmountPerTx Max mint amount per transaction
+    /// @param hiddenMetadataUri Hidden metadata uri
+    /// @param uriPrefix Metadata uri prefix
+    /// @param royaltyReceiver Royalty fee collector
+    /// @param royaltyFee Royalty fee numerator
+    /// @param contractOwner Contract owner
+    event ERC721ContractCreated(
+        address indexed createdContract,
+        string name,
+        string symbol,
+        uint256 cost,
+        uint256 maxSupply,
+        uint256 maxMintAmountPerTx,
+        string hiddenMetadataUri,
+        string uriPrefix,
+        address indexed royaltyReceiver,
+        uint96 royaltyFee,
+        address indexed contractOwner
+    );`
+
+export const wizardERC721 = `import "erc721a-upgradeable/contracts/ERC721AUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/common/ERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract ERC721Contract is ERC721A, Ownable, ReentrancyGuard {
+import "./WizardErrors.sol";
 
-  using Strings for uint256;
+contract ERC721 is ERC721AUpgradeable, OwnableUpgradeable, ERC2981Upgradeable, ReentrancyGuardUpgradeable {
+    /// @notice Contract merkle root
+    bytes32 public merkleRoot;
 
-  bytes32 public merkleRoot;
-  mapping(address => bool) public whitelistClaimed;
+    /// @notice Mapping of address to whitelist claimed bool
+    mapping(address => bool) public whitelistClaimed;
 
-  string public uriPrefix = '';
-  string public uriSuffix = '.json';
-  string public hiddenMetadataUri;
-  
-  uint256 public cost;
-  uint256 public maxSupply;
-  uint256 public maxMintAmountPerTx;
+    /// @notice Contract uri prefix
+    string public uriPrefix;
 
-  bool public paused = true;
-  bool public whitelistMintEnabled = false;
-  bool public revealed = false;
+    /// @notice Contract uri suffix
+    string public uriSuffix;
 
-  constructor(
-    string memory _tokenName,
-    string memory _tokenSymbol,
-    uint256 _cost,
-    uint256 _maxSupply,
-    uint256 _maxMintAmountPerTx,
-    string memory _hiddenMetadataUri,
-    address _newOwner
-  ) ERC721A(_tokenName, _tokenSymbol) {
-    cost = _cost;
-    maxSupply = _maxSupply;
-    maxMintAmountPerTx = _maxMintAmountPerTx;
-    setHiddenMetadataUri(_hiddenMetadataUri);
-    transferOwnership(_newOwner);
-  }
-`
-
-export const erc1155Snippet = `import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
-
-contract ERC1155Contract is ERC1155, Ownable {
+    /// @notice Contract hidden metadata uri
+    string public hiddenMetadataUri;
     
-  string public name;
-  string public symbol;
+    /// @notice Mint cost
+    uint256 public cost;
 
-  mapping(uint => string) public tokenURI;
+    /// @notice Contract maxSupply
+    uint256 public maxSupply;
 
-  constructor(
-    string memory _name, 
-    string memory _symbol, 
-    uint256 _id,
-    uint256 _amount,
-    string memory _uri,
-    address _newOwner
-  ) ERC1155("") {
-    name = _name;
-    symbol = _symbol;
-    _mint(_newOwner, _id, _amount, "");
-    tokenURI[_id] = _uri;
-    transferOwnership(_newOwner);
-  }
+    /// @notice Max mint amount per transaction
+    uint256 public maxMintAmountPerTx;
 
-  function mint(address _to, uint _id, uint _amount) external onlyOwner {
-    _mint(_to, _id, _amount, "");
-  }
-`
+    /// @notice Contract status state
+    bool public paused;
+
+    /// @notice Contract whitelist mint state
+    bool public whitelistMintEnabled;
+
+    /// @notice Contract revealed state
+    bool public revealed;`
+
+export const wizardERC1155 = `import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/common/ERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+
+import "./WizardErrors.sol";
+
+contract ERC1155 is ERC1155Upgradeable, ERC2981Upgradeable, OwnableUpgradeable {
+    /// @notice Contract name
+    string public name;
+
+    /// @notice Contract symbol
+    string public symbol;
+
+    /// @notice Mapping of uint (tokenId) to tokenURI
+    mapping(uint => string) public tokenURI;
+
+    /// @notice Emmited on setRoyaltyInfo()
+    /// @param royaltyReceiver Royalty fee collector
+    /// @param feePercent Royalty fee numerator; denominator is 10,000. So 500 represents 5%
+    event RoyaltyInfoChanged(
+        address indexed royaltyReceiver,
+        uint96 feePercent
+    );
+
+    /// @notice Emmited on setTokenRoyaltyInfo()
+    /// @param tokenId Token ID royalty to be set
+    /// @param royaltyReceiver Royalty fee collector
+    /// @param feePercent Royalty fee numerator; denominator is 10,000. So 500 represents 5%
+    event TokenRoyaltyInfoChanged(
+        uint256 tokenId,
+        address indexed royaltyReceiver,
+        uint96 feePercent
+    );`
