@@ -60,8 +60,8 @@ const Community = () => {
             <p className="text-4xl">{social.name}</p>
             <p className="uppercase">{social.description}</p>
             <a
-              className="border border-black text-black font-medium px-4 h-16 flex items-center justify-center uppercase whitespace-nowrap border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
-              href="https://app.ercwizard.com"
+              className="border border-black text-black font-medium px-4 h-16 flex items-center justify-center uppercase whitespace-nowrap hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
+              href={social.href}
             >
               {social.prefix} {social.name}
               <span className="ml-2 w-3 h-3 flex items-center">
