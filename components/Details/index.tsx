@@ -11,8 +11,8 @@ const Details = () => {
             Details
           </h2>
           <p className="uppercase">
-            create and deploy gas-efficient ready-to-use smart contract without
-            writing a single line of solidity code for your next project in
+            create and deploy gas-efficient ready-to-use smart contracts without
+            writing a single line of solidity code. launch your next project in
             under a minute, and have full control over it.
           </p>
           <p className="uppercase">
