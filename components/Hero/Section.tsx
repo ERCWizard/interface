@@ -34,7 +34,7 @@ export default function Section() {
         </div>
         <a
           className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
-          href="https://app.ercwizard.com"
+          href="/create"
         >
           generate smart contrtact
           <span className="ml-2">

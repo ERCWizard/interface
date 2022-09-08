@@ -8,11 +8,9 @@ const Home: NextPage = () => {
   return (
     <div>
       <Seo />
-      <main>
-        <Hero />
-        <Details />
-        <Community />
-      </main>
+      <Hero />
+      <Details />
+      <Community />
     </div>
   )
 }

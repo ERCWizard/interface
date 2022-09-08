@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { ercWizardHref } from 'utils/constants'
 
 export default function Seo({
-  title = 'Homepage ',
+  title = 'Home',
   description = 'No-code ERC Smart Contract generation for your NFT project.',
   siteName = 'ERC Wizard Protocol',
   canonical = ercWizardHref,

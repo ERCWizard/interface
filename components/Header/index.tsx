@@ -11,7 +11,7 @@ const Header = () => {
         <div className="h-16 flex items-center justify-between">
           <a href="/" className="flex items-center space-x-4">
             <div className="border border-white w-16 h-16 flex items-center justify-center">
-              <Image src={wand} width={32} height={32} />
+              <Image src={wand} width={32} height={32} alt="" />
             </div>
             <p className="text-2xl sm:text-3xl font-Poppins">ERC Wizard</p>
           </a>
@@ -28,7 +28,7 @@ const Header = () => {
               >
                 Launch App
                 <span className="ml-2">
-                  <Image src={arrowUpRight} width={10} height={10} />
+                  <Image src={arrowUpRight} width={10} height={10} alt="" />
                 </span>
               </a>
             </div>
@@ -37,9 +37,9 @@ const Header = () => {
               className="flex md:hidden items-center justify-center bg-white w-16 h-16"
             >
               {isOpen ? (
-                <Image src={xSvg} width={16} height={16} />
+                <Image src={xSvg} width={16} height={16} alt="" />
               ) : (
-                <Image src={expand} width={16} height={16} />
+                <Image src={expand} width={16} height={16} alt="" />
               )}
             </button>
           </nav>
