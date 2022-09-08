@@ -1,7 +1,8 @@
 import Image from 'next/image'
-import { navigationMenu } from 'utils/navigationMenu'
-import { wand, expand, xSvg, arrowUpRight } from 'assets'
 import { useState } from 'react'
+import { navigationMenu } from 'utils/navigationMenu'
+import { wand, expand, xSvg } from 'assets'
+import Wallet from './Wallet'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,15 +23,7 @@ const Header = () => {
                   {el.name}
                 </a>
               ))}
-              <a
-                className="bg-white text-black font-medium px-8 h-16 flex items-center justify-center border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
-                href="https://app.ercwizard.com"
-              >
-                Launch App
-                <span className="ml-2">
-                  <Image src={arrowUpRight} width={10} height={10} alt="" />
-                </span>
-              </a>
+              <Wallet />
             </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -47,6 +40,7 @@ const Header = () => {
       </header>
       {isOpen && (
         <div className="fixed top-32 left-0 w-full h-full z-50 bg-black uppercase px-8 sm:px-16 flex flex-col space-y-4">
+          <Wallet />
           {navigationMenu.map((el) => (
             <a key={el.name} href={el.href}>
               {el.name}
