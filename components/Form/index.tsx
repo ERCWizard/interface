@@ -1,6 +1,17 @@
-import { useState } from 'react'
-import { contractFormInputs } from 'constants/contractForm'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import {
+  useAccount,
+  useNetwork,
+  useContractRead,
+  useContractWrite,
+} from 'wagmi'
+import { ethers } from 'ethers'
+import { contractFormInputs, contractFormState } from 'constants/contractForm'
 import { Contract, contractOptions } from 'constants/contractOptions'
+import { useIsMounted } from 'hooks/useIsMounted'
+import { factoryAddresses } from 'constants/addresses'
+import { contractFunctionName } from 'constants/contractFunctionName'
+import WizardFactoryAbi from 'abi/WizardFactory.json'
 import PageTitle from 'components/PageTitle'
 
 const style = {
@@ -16,27 +27,73 @@ const style = {
 }
 
 const Form = () => {
-  const [option, setOption] = useState(Contract.ERC721)
+  const isMounted = useIsMounted()
+  const { chain } = useNetwork()
+  const { isConnected } = useAccount()
 
+  const [option, setOption] = useState(Contract.ERC721)
+  const [formState, setFormState]: any = useState(contractFormState)
+
+  const { data: cost } = useContractRead({
+    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    contractInterface: WizardFactoryAbi,
+    functionName: 'getCost',
+  })
+  const { isLoading, write } = useContractWrite({
+    mode: 'recklesslyUnprepared',
+    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    contractInterface: WizardFactoryAbi,
+    functionName: contractFunctionName[option],
+    overrides: {
+      value: cost,
+    },
+    onError(error) {
+      console.log('Error', error)
+    },
+    onSuccess(data) {
+      console.log('Success', data)
+    },
+  })
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (isConnected) {
+      console.log('submited ' + option)
+      write?.({
+        recklesslySetUnpreparedArgs: Object.values(formState[option]),
+      })
+    }
+  }
+  const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setFormState((prevState: any) => ({
+      ...prevState,
+      [option]: {
+        ...prevState[option],
+        [event.target.name]: event.target.value.replace(',', '.'),
+      },
+    }))
+  }
   return (
     <section className={style.wrapper}>
       <PageTitle title="create smart contract" />
-      <p className={style.description}>select the smart contract type</p>
+      <p className={style.description}>select the contract type</p>
       <div className={style.options}>
         {contractOptions.map((contractOption) => (
           <button
             className={style.optionsButton}
             key={contractOption}
+            disabled={isLoading}
             onClick={() => setOption(contractOption)}
           >
             {contractOption}
           </button>
         ))}
       </div>
-      <p className={style.description}>
-        fill in all the smart contract information
-      </p>
-      <form className={style.form}>
+      <p className={style.description}>fill in all the contract information</p>
+      <form
+        id={option}
+        className={style.form}
+        onSubmit={(event) => submitHandler(event)}
+      >
         {contractFormInputs[option].map((input: any) => (
           <div key={option + input.name} className={style.inputWrapper}>
             <input
@@ -51,15 +108,35 @@ const Form = () => {
               maxLength={input.maxlength}
               autoComplete="off"
               required
+              onChange={(e) => formHandler(e)}
+              value={formState[option][input.name]}
             />
             <label htmlFor={input.name} className={style.label}>
               {input.placeholder}
             </label>
           </div>
         ))}
-        <p className={style.description}>deployment cost:</p>
-        <button type="submit" className={style.formButton}>
-          deploy
+        <p className={style.description}>
+          deployment cost:{' '}
+          {isMounted && cost && (
+            <>
+              <span>{ethers.utils.formatEther(cost)}</span>
+              <span>{chain?.nativeCurrency?.symbol}</span>
+            </>
+          )}
+        </p>
+        <button
+          type="submit"
+          form={option}
+          disabled={isMounted && (!isConnected || isLoading)}
+          className={style.formButton}
+        >
+          {isMounted &&
+            (isConnected
+              ? isLoading
+                ? 'deploying...'
+                : 'deploy'
+              : 'connect wallet')}
         </button>
       </form>
     </section>
