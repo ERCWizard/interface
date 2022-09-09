@@ -8,31 +8,32 @@ import "./interfaces/IERC721.sol";
 import "./interfaces/IERC1155.sol";
 
 contract WizardFactory is Ownable, ReentrancyGuard {
-    /// @notice Emitted on createERC721Contract()
+    /// @notice Emitted on createERC721Contract() & createERC1155Contract()
     /// @param createdContract Address of deployed Contract
-    /// @param name Contract (ERC721) name
-    /// @param symbol Contract (ERC721) symbol
-    /// @param cost Mint cost
-    /// @param maxSupply Contract (ERC721) maxSupply
-    /// @param maxMintAmountPerTx Max mint amount per transaction
-    /// @param hiddenMetadataUri Hidden metadata uri
-    /// @param uriPrefix Metadata uri prefix
+    /// @param name Contract name
+    /// @param symbol Contract symbol
     /// @param royaltyReceiver Royalty fee collector
-    /// @param royaltyFee Royalty fee numerator
     /// @param contractOwner Contract owner
-    event ERC721ContractCreated(
+    event ContractCreated(
         address indexed createdContract,
         string name,
         string symbol,
-        uint256 cost,
-        uint256 maxSupply,
-        uint256 maxMintAmountPerTx,
-        string hiddenMetadataUri,
-        string uriPrefix,
+        ERCType contractType,
         address indexed royaltyReceiver,
-        uint96 royaltyFee,
         address indexed contractOwner
-    );`
+    );
+
+    /// @notice ERC contract types
+    enum ERCType { 
+        ERC721, 
+        ERC1155
+    }
+
+    /// @notice Created ERC contract
+    struct CreatedContract { 
+        ERCType _type;
+        address _address;
+    }`
 
 export const wizardERC721 = `import "erc721a-upgradeable/contracts/ERC721AUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
