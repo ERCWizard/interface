@@ -65,7 +65,7 @@ const Community = () => {
             >
               {social.prefix} {social.name}
               <span className="ml-2 w-3 h-3 flex items-center">
-                <Image src={arrowUpRight} width={10} height={10} />
+                <Image src={arrowUpRight} width={10} height={10} alt="" />
               </span>
             </a>
           </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { arrowUpRight, arrowRight } from 'assets'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCreative, Autoplay } from 'swiper'
@@ -20,27 +21,26 @@ export default function Section() {
         </p>
         <div className="uppercase space-y-2">
           <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} />
+            <Image src={arrowRight} width={10} height={10} alt="" />
             <p>networks: polygon, mumbai</p>
           </span>
           <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} />
+            <Image src={arrowRight} width={10} height={10} alt="" />
             <p>language: solidity</p>
           </span>
           <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} />
+            <Image src={arrowRight} width={10} height={10} alt="" />
             <p>contracts: erc-721, erc-1155</p>
           </span>
         </div>
-        <a
-          className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
-          href="/create"
-        >
-          generate smart contrtact
-          <span className="ml-2">
-            <Image src={arrowUpRight} width={10} height={10} />
-          </span>
-        </a>
+        <Link href="/create">
+          <a className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out">
+            generate smart contrtact
+            <span className="ml-2">
+              <Image src={arrowUpRight} width={10} height={10} alt="" />
+            </span>
+          </a>
+        </Link>
       </div>
       <div className="w-full lg:flex-1 bg-white border border-neutral-900 relative polka-l-b square-r-t">
         <Swiper

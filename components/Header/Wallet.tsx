@@ -41,7 +41,7 @@ const Wallet = () => {
           <span className="flex items-center justify-center">
             connect wallet
             <span className="ml-2 w-5 h-5">
-              <Image src={connectSvg} width={20} height={20} />
+              <Image src={connectSvg} width={20} height={20} alt="" />
             </span>
           </span>
         )}

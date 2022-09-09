@@ -14,7 +14,7 @@ const { chains, provider, webSocketProvider } = configureChains(
   [chain.polygon, chain.polygonMumbai, chain.hardhat],
   [
     alchemyProvider({
-      apiKey: process.env.NEXT_PUBLIC_POLYGON_ALCHEMY_API_KEY ?? '',
+      apiKey: process.env.POLYGON_ALCHEMY_API_KEY,
     }),
     publicProvider(),
   ]

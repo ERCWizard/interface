@@ -26,12 +26,12 @@ const Details = () => {
           >
             open-source code github
             <span className="ml-2">
-              <Image src={arrowUpRight} width={10} height={10} />
+              <Image src={arrowUpRight} width={10} height={10} alt="" />
             </span>
           </a>
         </div>
         <div className="w-full lg:flex-1 flex items-center justify-center space-y-8 relative polka-r-l">
-          <Image src={deco} />
+          <Image src={deco} alt="" />
         </div>
       </div>
     </section>

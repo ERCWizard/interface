@@ -10,7 +10,7 @@ const Hero = () => {
       <Links />
       <div className="flex items-end">
         <div className="border border-white h-16 w-16 flex items-center justify-center my-12 animate-bounce">
-          <Image src={arrowDown} width={24} height={24} />
+          <Image src={arrowDown} width={24} height={24} alt="" />
         </div>
       </div>
     </section>

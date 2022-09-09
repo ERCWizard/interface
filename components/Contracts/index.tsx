@@ -82,7 +82,10 @@ const Contracts = () => {
               ))
             ) : (
               <tr className={style.contractSkeleton}>
-                <td className="px-4 uppercase">
+                <td className="px-4">
+                  <div className={style.skeleton} />
+                </td>
+                <td className="px-4">
                   <div className={style.skeleton} />
                 </td>
                 <td className="px-4">

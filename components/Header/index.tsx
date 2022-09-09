@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { navigationMenu } from 'utils/navigationMenu'
-import { wand, expand, xSvg } from 'assets'
+import { expand, xSvg } from 'assets'
 import Wallet from './Wallet'
 
 const Header = () => {
@@ -10,18 +11,17 @@ const Header = () => {
     <>
       <header className="py-8 bg-black/70 backdrop-blur-lg sticky top-0 z-50">
         <div className="h-16 flex items-center justify-between">
-          <a
-            href="/"
-            className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4"
-          >
-            ERC Wizard
-          </a>
+          <Link href="/">
+            <a className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4">
+              ERC Wizard
+            </a>
+          </Link>
           <nav>
             <div className="hidden md:flex items-center space-x-8 uppercase">
               {navigationMenu.map((el) => (
-                <a key={el.name} href={el.href}>
+                <Link key={el.name} href={el.href}>
                   {el.name}
-                </a>
+                </Link>
               ))}
               <Wallet />
             </div>
@@ -42,9 +42,9 @@ const Header = () => {
         <div className="fixed top-32 left-0 w-full h-full z-50 bg-black uppercase px-8 sm:px-16 flex flex-col space-y-4">
           <Wallet />
           {navigationMenu.map((el) => (
-            <a key={el.name} href={el.href}>
+            <Link key={el.name} href={el.href}>
               {el.name}
-            </a>
+            </Link>
           ))}
         </div>
       )}
