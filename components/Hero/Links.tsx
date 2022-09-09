@@ -1,20 +1,16 @@
 import Image from 'next/image'
-import {
-  twitter,
-  discord,
-  github,
-  polygonLogo,
-  polygon,
-  ethLogo,
-  eth,
-} from 'assets'
+import { twitter, discord, github, polygonLogo, polygon } from 'assets'
 import { twitterHref, discordHref, githubHref } from 'utils/constants'
+import { factoryAddresses } from 'constants/addresses'
+import { SupportedChainId } from 'constants/chains'
 
 export default function Links() {
   return (
     <div className="flex justify-between gap-8 w-full mt-16">
       <a
-        href="https://polygonscan.com/"
+        href={`https://polygonscan.com/address/${
+          factoryAddresses[SupportedChainId.POLYGON]
+        }`}
         className="border h-12 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out"
       >
         <div className="hidden sm:flex">
