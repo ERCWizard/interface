@@ -18,7 +18,8 @@ const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
   description: `text-neutral-400 text-xs uppercase my-4`,
   options: `flex w-full space-x-4 pb-8 border-b border-neutral-900`,
-  optionsButton: `bg-white text-black uppercase px-8 h-16 w-60 flex items-center justify-center`,
+  optionsButton: `border bg-black text-white hover:bg-neutral-900 uppercase px-8 h-16 w-60 flex items-center justify-center`,
+  optionsButtonActive: `border bg-white text-black uppercase px-8 h-16 w-60 flex items-center justify-center`,
   form: `w-full`,
   inputWrapper: `relative z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
   input: `block w-full h-full px-4 text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
@@ -79,7 +80,11 @@ const Form = () => {
       <div className={style.options}>
         {contractOptions.map((contractOption) => (
           <button
-            className={style.optionsButton}
+            className={
+              contractOption == option
+                ? style.optionsButtonActive
+                : style.optionsButton
+            }
             key={contractOption}
             disabled={isLoading}
             onClick={() => setOption(contractOption)}
