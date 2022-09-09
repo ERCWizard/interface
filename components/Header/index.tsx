@@ -10,11 +10,11 @@ const Header = () => {
     <>
       <header className="py-8 bg-black/70 backdrop-blur-lg sticky top-0 z-50">
         <div className="h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center space-x-4">
-            <div className="border border-white w-16 h-16 flex items-center justify-center">
-              <Image src={wand} width={32} height={32} alt="" />
-            </div>
-            <p className="text-2xl sm:text-3xl font-Poppins">ERC Wizard</p>
+          <a
+            href="/"
+            className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4"
+          >
+            ERC Wizard
           </a>
           <nav>
             <div className="hidden md:flex items-center space-x-8 uppercase">

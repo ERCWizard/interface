@@ -20,7 +20,7 @@ const style = {
   options: `flex w-full space-x-4 pb-8 border-b border-neutral-900`,
   optionsButton: `bg-white text-black uppercase px-8 h-16 w-60 flex items-center justify-center`,
   form: `w-full`,
-  inputWrapper: `relative z-0 mb-4 w-full h-16 group bg-neutral-900`,
+  inputWrapper: `relative z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
   input: `block w-full h-full px-4 text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
   label: `absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-4 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-4`,
   formButton: `bg-white text-black font-medium uppercase px-8 h-16 w-full flex items-center justify-center`,

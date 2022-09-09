@@ -7,4 +7,8 @@ export const navigationMenu = [
     name: 'create',
     href: '/create',
   },
+  {
+    name: 'dashboard',
+    href: '/dashboard',
+  },
 ]
