@@ -53,21 +53,9 @@
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "uri",
-        "type": "string"
+        "internalType": "enum WizardFactory.ERCType",
+        "name": "contractType",
+        "type": "uint8"
       },
       {
         "indexed": true,
@@ -76,92 +64,13 @@
         "type": "address"
       },
       {
-        "indexed": false,
-        "internalType": "uint96",
-        "name": "royaltyFee",
-        "type": "uint96"
-      },
-      {
         "indexed": true,
         "internalType": "address",
         "name": "contractOwner",
         "type": "address"
       }
     ],
-    "name": "ERC1155ContractCreated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "createdContract",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "symbol",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "cost",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxSupply",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxMintAmountPerTx",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "hiddenMetadataUri",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "uriPrefix",
-        "type": "string"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "royaltyReceiver",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint96",
-        "name": "royaltyFee",
-        "type": "uint96"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "contractOwner",
-        "type": "address"
-      }
-    ],
-    "name": "ERC721ContractCreated",
+    "name": "ContractCreated",
     "type": "event"
   },
   {

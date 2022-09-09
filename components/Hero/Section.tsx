@@ -21,7 +21,7 @@ export default function Section() {
         <div className="uppercase space-y-2">
           <span className="flex space-x-4">
             <Image src={arrowRight} width={10} height={10} />
-            <p>network: polygon</p>
+            <p>networks: polygon, mumbai</p>
           </span>
           <span className="flex space-x-4">
             <Image src={arrowRight} width={10} height={10} />

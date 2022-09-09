@@ -35,7 +35,7 @@ const Form = () => {
   const [option, setOption] = useState(Contract.ERC721)
   const [formState, setFormState]: any = useState(contractFormState)
 
-  const { data: cost } = useContractRead({
+  const { data: cost, isLoading: isLoadingCost } = useContractRead({
     addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: 'getCost',
@@ -123,11 +123,17 @@ const Form = () => {
         ))}
         <p className={style.description}>
           deployment cost:{' '}
-          {isMounted && cost && (
-            <>
-              <span>{ethers.utils.formatEther(cost)}</span>
-              <span>{chain?.nativeCurrency?.symbol}</span>
-            </>
+          {isMounted && cost ? (
+            isLoadingCost ? (
+              <span>fetching...</span>
+            ) : (
+              <span>
+                {ethers.utils.formatEther(cost).slice(0, 6)}{' '}
+                {chain?.nativeCurrency?.symbol}
+              </span>
+            )
+          ) : (
+            <span>fetching failed</span>
           )}
         </p>
         <button
