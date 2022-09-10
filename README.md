@@ -2,8 +2,6 @@
 
 An open source interface for ERCWizard -- a decentralized protocol for creating and deploying ERC Smart Contracts.
 
-Interface: [ercwizard.com](https://ercwizard.com)
-
 ## Accessing the ERCWizard Interface
 
 To access the ERCWizard Interface, visit [ercwizard.com](https://ercwizard.com).
@@ -39,3 +37,4 @@ Start the server
 To run this project, you will need to add the following environment variables to your .env file
 
 `POLYGON_ALCHEMY_API_KEY`
+`NEXT_PUBLIC_GOOGLE_ANALYTICS`

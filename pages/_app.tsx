@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Script from 'next/script'
 import type { AppProps } from 'next/app'
 import { WagmiConfig, createClient, chain, configureChains } from 'wagmi'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
@@ -50,13 +51,29 @@ const client = createClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={client}>
-      <div className="bg-black text-white px-8 sm:px-16">
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </div>
-    </WagmiConfig>
+    <>
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+        `}
+      </Script>
+      <WagmiConfig client={client}>
+        <div className="bg-black text-white px-8 sm:px-16">
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
+      </WagmiConfig>
+    </>
   )
 }
 
