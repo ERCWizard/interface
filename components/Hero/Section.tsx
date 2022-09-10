@@ -8,13 +8,14 @@ import 'swiper/css/bundle'
 import 'swiper/css/effect-creative'
 import { wizardFactory, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 import { formatCode } from 'utils/formatCode'
+import { glitchInText } from 'utils/animate'
 
 export default function Section() {
   return (
     <div className="flex lg:flex-row flex-col items-center w-full gap-16 mt-8">
       <div className="flex-1 space-y-8">
         <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-medium font-Poppins">
-          Create and Deploy Smart Contracts With No-Code
+          {glitchInText('Create and Deploy Smart Contracts With No-Code')}
         </h1>
         <p className="uppercase">
           erc wizard is a decentralized, open-source protocol for creating and
