@@ -4,6 +4,7 @@ import {
   useNetwork,
   useContractRead,
   useContractWrite,
+  useWaitForTransaction,
 } from 'wagmi'
 import { ethers } from 'ethers'
 import { contractFormInputs, contractFormState } from 'constants/contractForm'
@@ -40,7 +41,7 @@ const Form = () => {
     contractInterface: WizardFactoryAbi,
     functionName: 'getCost',
   })
-  const { isLoading, write } = useContractWrite({
+  const { data, isLoading, write } = useContractWrite({
     mode: 'recklesslyUnprepared',
     addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
@@ -49,10 +50,19 @@ const Form = () => {
       value: cost,
     },
     onError(error) {
-      console.log('Error', error)
+      console.log('ContractWrite Error', error)
     },
     onSuccess(data) {
-      console.log('Success', data)
+      console.log('ContractWrite Success', data)
+    },
+  })
+  const { isLoading: waitForTransactionIsLoading } = useWaitForTransaction({
+    hash: data?.hash,
+    onError(error) {
+      console.log('Transaction Error', error)
+    },
+    onSuccess(data) {
+      console.log('Transaction Success', data)
     },
   })
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
@@ -86,7 +96,7 @@ const Form = () => {
                 : style.optionsButton
             }
             key={contractOption}
-            disabled={isLoading}
+            disabled={isLoading || waitForTransactionIsLoading}
             onClick={() => setOption(contractOption)}
           >
             {contractOption}
@@ -139,12 +149,15 @@ const Form = () => {
         <button
           type="submit"
           form={option}
-          disabled={isMounted && (!isConnected || isLoading)}
+          disabled={
+            isMounted &&
+            (!isConnected || isLoading || waitForTransactionIsLoading)
+          }
           className={style.formButton}
         >
           {isMounted &&
             (isConnected
-              ? isLoading
+              ? isLoading || waitForTransactionIsLoading
                 ? 'deploying...'
                 : 'deploy'
               : 'connect wallet')}
