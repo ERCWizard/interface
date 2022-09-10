@@ -80,3 +80,10 @@ body {
 #connect:hover p:before {
   content: 'disconnect';
 }
+
+.code-block span {
+  display: inline-block;
+  text-align: right;
+  width: 14px;
+  margin-right: 1rem;
+}

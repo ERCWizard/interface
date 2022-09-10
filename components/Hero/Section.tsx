@@ -7,6 +7,7 @@ import 'swiper/css'
 import 'swiper/css/bundle'
 import 'swiper/css/effect-creative'
 import { wizardFactory, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
+import { formatCode } from 'utils/formatCode'
 
 export default function Section() {
   return (
@@ -65,19 +66,13 @@ export default function Section() {
           modules={[EffectCreative, Autoplay]}
         >
           <SwiperSlide className="bg-black text-white">
-            <div className="p-8">
-              <pre>{wizardFactory}</pre>
-            </div>
+            {formatCode(wizardFactory)}
           </SwiperSlide>
           <SwiperSlide className="bg-black text-white">
-            <div className="p-8">
-              <pre>{wizardERC721}</pre>
-            </div>
+            {formatCode(wizardERC721)}
           </SwiperSlide>
           <SwiperSlide className="bg-black text-white">
-            <div className="p-8">
-              <pre>{wizardERC1155}</pre>
-            </div>
+            {formatCode(wizardERC1155)}
           </SwiperSlide>
         </Swiper>
       </div>
