@@ -76,3 +76,53 @@
   width: 14px;
   margin-right: 1rem;
 }
+
+.copy-tooltip {
+  position: relative;
+}
+
+.copy-tooltip::before {
+  content: '';
+  display: none;
+  position: absolute;
+  z-index: 9998;
+  bottom: 27px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.72);
+}
+
+.copy-tooltip::after {
+  content: 'copy to clipboard';
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 1rem;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0);
+}
+
+.copy-tooltip:hover::before,
+.copy-tooltip:hover::after {
+  display: block;
+}
+
+.copy-tooltip:active,
+.copy-tooltip:focus {
+  outline: none;
+}
+
+.copy-tooltip:active::after,
+.copy-tooltip:focus::after {
+  content: 'copied!';
+}

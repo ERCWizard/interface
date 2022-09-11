@@ -2,7 +2,9 @@ import { useAccount, useNetwork, useContractRead } from 'wagmi'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { factoryAddresses } from 'constants/addresses'
 import { formatContractType } from 'utils/formatContractType'
-import WizardFactoryAbi from 'abi/WizardFactory.json'
+import { WizardFactoryAbi } from 'abi'
+import { contractAbi } from 'constants/contractAbi'
+import { useCopyClipboard } from 'hooks/useCopyClipboard'
 import PageTitle from 'components/PageTitle'
 
 const style = {
@@ -11,12 +13,14 @@ const style = {
   table: `w-full text-left border-separate border-spacing-[1px]`,
   thead: `uppercase bg-neutral-800 text-neutral-400 border-b border-neutral-800`,
   contract: `h-16 whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150`,
+  contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
   contractAddress: `text-neutral-400 hover:text-white ease-in duration-150`,
   contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900`,
   skeleton: `w-full h-4 bg-neutral-800 animate-pulse`,
 }
 
 const Contracts = () => {
+  const { copy } = useCopyClipboard()
   const isMounted = useIsMounted()
   const { chain } = useNetwork()
   const { address } = useAccount()
@@ -46,7 +50,10 @@ const Contracts = () => {
               <th scope="col" className="px-4 font-normal">
                 contract address
               </th>
-              <th scope="col" className="px-4 font-normal w-28">
+              <th scope="col" className="px-4 font-normal w-28 text-center">
+                abi
+              </th>
+              <th scope="col" className="px-4 font-normal w-28 text-center">
                 interact
               </th>
             </tr>
@@ -68,29 +75,35 @@ const Contracts = () => {
                       {contract._address} ↗
                     </a>
                   </td>
-                  <td className="px-4 uppercase">
+                  <td className="px-4 uppercase text-center">
+                    <button
+                      onClick={() =>
+                        copy(contractAbi[formatContractType(contract._type)])
+                      }
+                      className={`${style.contractCopy} copy-tooltip`}
+                    >
+                      copy
+                    </button>
+                  </td>
+                  <td className="px-4 uppercase text-center">
                     <a
                       href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}#writeContract`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={style.contractAddress}
                     >
-                      write
+                      write ↗
                     </a>
                   </td>
                 </tr>
               ))
             ) : (
               <tr className={style.contractSkeleton}>
-                <td className="px-4">
-                  <div className={style.skeleton} />
-                </td>
-                <td className="px-4">
-                  <div className={style.skeleton} />
-                </td>
-                <td className="px-4">
-                  <div className={style.skeleton} />
-                </td>
+                {Array.from({ length: 4 }, (_, i) => (
+                  <td className="px-4" key={i}>
+                    <div className={style.skeleton} />
+                  </td>
+                ))}
               </tr>
             )}
           </tbody>
