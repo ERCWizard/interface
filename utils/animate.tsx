@@ -4,6 +4,7 @@ export function glitchInText(text: any) {
   a.map((c, i) =>
     b.push(
       <span
+        key={i + c}
         style={{
           visibility: 'hidden',
           animationName: 'glitchIn',
