@@ -12,6 +12,7 @@
     "boring-avatars": "^1.7.0",
     "ethers": "^5.7.0",
     "next": "12.2.5",
+    "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swiper": "^8.3.2",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "18.7.14",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",

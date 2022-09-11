@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import { useEffect } from 'react'
 import Script from 'next/script'
 import type { AppProps } from 'next/app'
 import {
@@ -17,6 +18,8 @@ import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { factoryAddresses } from 'constants/addresses'
 import WizardFactoryAbi from 'abi/WizardFactory.json'
+import { useRouter } from 'next/router'
+import NProgress from 'nprogress'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 
@@ -59,13 +62,31 @@ const client = createClient({
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   const { chain } = useNetwork()
+
   useContractEvent({
     addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     eventName: 'ContractCreated',
     listener: (event) => console.log('ContractCreated event', event),
   })
+
+  useEffect(() => {
+    const handleStart = () => NProgress.start()
+    const handleStop = () => NProgress.done()
+
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleStop)
+    router.events.on('routeChangeError', handleStop)
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart)
+      router.events.off('routeChangeComplete', handleStop)
+      router.events.off('routeChangeError', handleStop)
+    }
+  }, [router])
+
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}

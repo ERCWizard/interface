@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
 @import url('./animate.css');
 @import url('./utils.css');
+@import url('./nprogress.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

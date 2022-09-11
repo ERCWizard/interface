@@ -15,6 +15,7 @@ import { contractFunctionName } from 'constants/contractFunctionName'
 import WizardFactoryAbi from 'abi/WizardFactory.json'
 import PageTitle from 'components/PageTitle'
 import { useRouter } from 'next/router'
+import NProgress from 'nprogress'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -56,15 +57,18 @@ const Form = () => {
     },
     onSuccess(data) {
       console.log('ContractWrite Success', data)
+      NProgress.start()
     },
   })
   const { isLoading: waitForTransactionIsLoading } = useWaitForTransaction({
     hash: data?.hash,
     onError(error) {
       console.log('Transaction Error', error)
+      NProgress.done()
     },
     onSuccess(data) {
       console.log('Transaction Success', data)
+      NProgress.done()
       router.push('/dashboard')
     },
   })
