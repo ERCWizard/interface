@@ -14,6 +14,7 @@ import { factoryAddresses } from 'constants/addresses'
 import { contractFunctionName } from 'constants/contractFunctionName'
 import WizardFactoryAbi from 'abi/WizardFactory.json'
 import PageTitle from 'components/PageTitle'
+import { useRouter } from 'next/router'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -29,6 +30,7 @@ const style = {
 }
 
 const Form = () => {
+  const router = useRouter()
   const isMounted = useIsMounted()
   const { chain } = useNetwork()
   const { isConnected } = useAccount()
@@ -63,6 +65,7 @@ const Form = () => {
     },
     onSuccess(data) {
       console.log('Transaction Success', data)
+      router.push('/dashboard')
     },
   })
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {

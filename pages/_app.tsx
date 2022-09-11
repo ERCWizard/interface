@@ -1,13 +1,22 @@
 import '../styles/globals.css'
 import Script from 'next/script'
 import type { AppProps } from 'next/app'
-import { WagmiConfig, createClient, chain, configureChains } from 'wagmi'
+import {
+  WagmiConfig,
+  createClient,
+  chain,
+  configureChains,
+  useContractEvent,
+  useNetwork,
+} from 'wagmi'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { factoryAddresses } from 'constants/addresses'
+import WizardFactoryAbi from 'abi/WizardFactory.json'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 
@@ -50,6 +59,13 @@ const client = createClient({
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { chain } = useNetwork()
+  useContractEvent({
+    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    contractInterface: WizardFactoryAbi,
+    eventName: 'ContractCreated',
+    listener: (event) => console.log('ContractCreated event', event),
+  })
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
