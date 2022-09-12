@@ -41,13 +41,15 @@ const Form = () => {
   const [formState, setFormState]: any = useState(contractFormState)
 
   const { data: cost, isLoading: isLoadingCost } = useContractRead({
-    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    addressOrName:
+      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: 'getCost',
   })
   const { data, isLoading, write } = useContractWrite({
     mode: 'recklesslyUnprepared',
-    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    addressOrName:
+      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: contractFunctionName[option],
     overrides: {

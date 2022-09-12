@@ -66,7 +66,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { chain } = useNetwork()
 
   useContractEvent({
-    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    addressOrName:
+      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     eventName: 'ContractCreated',
     listener: (event) => console.log('ContractCreated event', event),

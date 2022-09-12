@@ -26,7 +26,8 @@ const Contracts = () => {
   const { chain } = useNetwork()
   const { address } = useAccount()
   const { data, isLoading } = useContractRead({
-    addressOrName: chain?.id ? factoryAddresses[chain.id] : '',
+    addressOrName:
+      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: 'getCreatedContracts',
     args: address,
