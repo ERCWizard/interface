@@ -1,7 +1,6 @@
-import Image from 'next/image'
-import { arrowDown } from 'assets'
 import Links from './Links'
 import Section from './Section'
+import { ArrowDownIcon } from '@heroicons/react/20/solid'
 
 const Hero = () => {
   return (
@@ -10,7 +9,7 @@ const Hero = () => {
       <Links />
       <div className="flex items-end">
         <div className="border border-white h-16 w-16 flex items-center justify-center my-12 animate-bounce">
-          <Image src={arrowDown} width={24} height={24} alt="" />
+          <ArrowDownIcon className="h-8 w-8" />
         </div>
       </div>
     </section>

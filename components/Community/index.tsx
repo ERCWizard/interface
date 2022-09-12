@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { arrowUpRight } from 'assets'
 import { twitter, discord, github } from 'assets'
 import { twitterHref, discordHref, githubHref } from 'utils/constants'
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 const socials = [
   {
@@ -64,9 +64,7 @@ const Community = () => {
               href={social.href}
             >
               {social.prefix} {social.name}
-              <span className="ml-2 w-3 h-3 flex items-center">
-                <Image src={arrowUpRight} width={10} height={10} alt="" />
-              </span>
+              <ArrowUpRightIcon className="h-5 w-5" />
             </a>
           </div>
         ))}

@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { navigationMenu } from 'utils/navigationMenu'
-import { expand, xSvg } from 'assets'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid'
 import Wallet from './Wallet'
 
 const Header = () => {
@@ -30,9 +29,9 @@ const Header = () => {
               className="flex md:hidden items-center justify-center bg-white w-16 h-16"
             >
               {isOpen ? (
-                <Image src={xSvg} width={16} height={16} alt="" />
+                <XMarkIcon className="h-8 w-8 text-black" />
               ) : (
-                <Image src={expand} width={16} height={16} alt="" />
+                <Bars3Icon className="h-8 w-8 text-black" />
               )}
             </button>
           </nav>

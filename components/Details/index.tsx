@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { arrowUpRight, deco } from 'assets'
+import { deco } from 'assets'
 import { githubHref } from 'utils/constants'
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 const Details = () => {
   return (
@@ -25,9 +26,7 @@ const Details = () => {
             href={githubHref}
           >
             open-source code github
-            <span className="ml-2">
-              <Image src={arrowUpRight} width={10} height={10} alt="" />
-            </span>
+            <ArrowUpRightIcon className="h-5 w-5" />
           </a>
         </div>
         <div className="w-full lg:flex-1 flex items-center justify-center space-y-8 relative polka-r-l">

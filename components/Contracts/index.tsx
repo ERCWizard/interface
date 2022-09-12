@@ -5,6 +5,7 @@ import { formatContractType } from 'utils/formatContractType'
 import { WizardFactoryAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 import PageTitle from 'components/PageTitle'
 
 const style = {
@@ -14,7 +15,7 @@ const style = {
   thead: `uppercase bg-neutral-800 text-neutral-400 border-b border-neutral-800`,
   contract: `h-16 whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150`,
   contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
-  contractAddress: `text-neutral-400 hover:text-white ease-in duration-150`,
+  contractAddress: `flex items-center text-neutral-400 hover:text-white ease-in duration-150`,
   contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900`,
   skeleton: `w-full h-4 bg-neutral-800 animate-pulse`,
 }
@@ -72,7 +73,8 @@ const Contracts = () => {
                       rel="noopener noreferrer"
                       className={style.contractAddress}
                     >
-                      {contract._address} ↗
+                      {contract._address}
+                      <ArrowUpRightIcon className="h-5 w-5" />
                     </a>
                   </td>
                   <td className="px-4 uppercase text-center">
@@ -92,7 +94,8 @@ const Contracts = () => {
                       rel="noopener noreferrer"
                       className={style.contractAddress}
                     >
-                      write ↗
+                      write
+                      <ArrowUpRightIcon className="h-5 w-5" />
                     </a>
                   </td>
                 </tr>

@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import { connectSvg } from 'assets'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { formatAddress } from 'utils/formatAddress'
@@ -38,12 +36,7 @@ const Wallet = () => {
         ) : isLoading ? (
           <span>connecting...</span>
         ) : (
-          <span className="flex items-center justify-center">
-            connect wallet
-            <span className="ml-2 w-5 h-5">
-              <Image src={connectSvg} width={20} height={20} alt="" />
-            </span>
-          </span>
+          <span>connect wallet</span>
         )}
       </button>
       {isMounted && (

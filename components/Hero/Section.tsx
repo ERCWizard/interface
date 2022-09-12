@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { arrowUpRight, arrowRight } from 'assets'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCreative, Autoplay } from 'swiper'
 import 'swiper/css'
@@ -9,6 +7,7 @@ import 'swiper/css/effect-creative'
 import { wizardFactory, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 import { formatCode } from 'utils/formatCode'
 import { glitchInText } from 'utils/animate'
+import { ArrowRightIcon, ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 export default function Section() {
   return (
@@ -22,25 +21,23 @@ export default function Section() {
           deploying erc smart contracts without writing a single line of code.
         </p>
         <div className="uppercase space-y-2">
-          <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} alt="" />
+          <span className="flex items-center space-x-4">
+            <ArrowRightIcon className="h-4 w-4" />
             <p>networks: polygon, mumbai</p>
           </span>
-          <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} alt="" />
+          <span className="flex items-center space-x-4">
+            <ArrowRightIcon className="h-4 w-4" />
             <p>language: solidity</p>
           </span>
-          <span className="flex space-x-4">
-            <Image src={arrowRight} width={10} height={10} alt="" />
+          <span className="flex items-center space-x-4">
+            <ArrowRightIcon className="h-4 w-4" />
             <p>contracts: erc-721, erc-1155</p>
           </span>
         </div>
         <Link href="/create">
           <a className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out">
             generate smart contrtact
-            <span className="ml-2">
-              <Image src={arrowUpRight} width={10} height={10} alt="" />
-            </span>
+            <ArrowUpRightIcon className="h-5 w-5" />
           </a>
         </Link>
       </div>
