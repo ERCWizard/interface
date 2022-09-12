@@ -40,7 +40,7 @@ export const contractFormInputs: ContractFormInputs = {
     {
       type: 'number',
       name: 'cost',
-      placeholder: 'token mint cost',
+      placeholder: 'mint cost (in wei)',
       min: '0',
       max: '',
       minlength: '1',
@@ -50,7 +50,7 @@ export const contractFormInputs: ContractFormInputs = {
     {
       type: 'number',
       name: 'maxSupply',
-      placeholder: 'token max supply',
+      placeholder: 'max supply',
       min: '1',
       max: '',
       minlength: '1',
@@ -60,7 +60,7 @@ export const contractFormInputs: ContractFormInputs = {
     {
       type: 'number',
       name: 'maxMintAmountPerTx',
-      placeholder: 'token max mint amount per tx',
+      placeholder: 'max mint amount per tx',
       min: '1',
       max: '',
       minlength: '1',
@@ -70,7 +70,7 @@ export const contractFormInputs: ContractFormInputs = {
     {
       type: 'text',
       name: 'hiddenMetadataUri',
-      placeholder: 'token hidden metadata uri',
+      placeholder: 'hidden metadata uri',
       min: '',
       max: '',
       minlength: '1',
@@ -80,7 +80,7 @@ export const contractFormInputs: ContractFormInputs = {
     {
       type: 'text',
       name: 'uriPrefix',
-      placeholder: 'token metadata uri prefix',
+      placeholder: 'metadata uri prefix',
       min: '',
       max: '',
       minlength: '1',
