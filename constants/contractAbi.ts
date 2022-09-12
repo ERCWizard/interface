@@ -1,4 +1,4 @@
-import { Contract } from 'constants/contractOptions'
+import { Contract } from 'enums'
 import { ERC721Abi, ERC1155Abi } from 'abi'
 
 type ContractAbi = {

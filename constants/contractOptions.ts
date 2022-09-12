@@ -1,6 +1,3 @@
-export enum Contract {
-  ERC721 = 'erc721',
-  ERC1155 = 'erc1155',
-}
+import { Contract } from 'enums'
 
 export const contractOptions = [Contract.ERC721, Contract.ERC1155]

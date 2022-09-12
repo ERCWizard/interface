@@ -1,4 +1,4 @@
-import { Contract } from 'constants/contractOptions'
+import { Contract } from 'enums'
 
 export const formatContractType = (type: number) => {
   switch (type) {

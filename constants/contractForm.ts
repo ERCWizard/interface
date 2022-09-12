@@ -1,4 +1,4 @@
-import { Contract } from './contractOptions'
+import { Contract } from 'enums'
 
 type ContractFormInputs = {
   [type: string]: Inputs[]
