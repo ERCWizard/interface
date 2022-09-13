@@ -16,12 +16,16 @@ const Header = () => {
             </a>
           </Link>
           <nav>
-            <div className="hidden md:flex items-center space-x-8 uppercase">
-              {navigationMenu.map((el) => (
-                <Link key={el.name} href={el.href}>
-                  {el.name}
-                </Link>
-              ))}
+            <div className="hidden md:flex items-center">
+              <div className="space-x-8 mr-8 uppercase hover:text-neutral-400">
+                {navigationMenu.map((el) => (
+                  <Link key={el.name} href={el.href}>
+                    <a className="hover:text-white transition ease-in-out duration-200">
+                      {el.name}
+                    </a>
+                  </Link>
+                ))}
+              </div>
               <Wallet />
             </div>
             <button
