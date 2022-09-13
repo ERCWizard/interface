@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { twitter, discord, github } from 'assets'
-import { twitterHref, discordHref, githubHref } from 'utils/constants'
+import { twitterHref, discordHref, githubHref } from 'constants/hrefs'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 const socials = [

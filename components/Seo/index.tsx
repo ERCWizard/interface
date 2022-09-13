@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { ercWizardHref } from 'utils/constants'
+import { ercWizardHref } from 'constants/hrefs'
 
 export default function Seo({
   title = 'Home',

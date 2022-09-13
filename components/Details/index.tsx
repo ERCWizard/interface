@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { deco } from 'assets'
-import { githubHref } from 'utils/constants'
+import { githubHref } from 'constants/hrefs'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 const Details = () => {
@@ -18,8 +18,8 @@ const Details = () => {
           </p>
           <p className="uppercase">
             supporting erc-721 and erc-1155 contract generation. developed
-            following the erc standards, and using secure open-source libraries
-            like OpenZeppelin.
+            following the erc standards, with secure open-source libraries like
+            OpenZeppelin and Chainlink.
           </p>
           <a
             className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
