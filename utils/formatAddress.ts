@@ -1,4 +1,7 @@
-export function formatAddress(address: string | undefined | null) {
+export function formatAddress(
+  address: string | undefined | null,
+  length: number = 6
+) {
   if (!address) return
-  return address.slice(0, 5) + '...' + address.slice(-4)
+  return address.slice(0, length) + '...' + address.slice(-length + 2)
 }
