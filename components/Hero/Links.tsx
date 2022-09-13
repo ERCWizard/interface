@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import { twitter, discord, github, polygonLogo, polygon, gitbook } from 'assets'
 import {
   twitterHref,
   discordHref,
@@ -8,11 +6,19 @@ import {
 } from 'constants/hrefs'
 import { factoryAddresses } from 'constants/addresses'
 import { SupportedChainId } from 'constants/chains'
+import {
+  PolygonIcon,
+  PolygonLogo,
+  TwitterIcon,
+  DiscordIcon,
+  GithubIcon,
+  GitbookIcon,
+} from 'assets'
 
 const style = {
   main: `flex justify-between space-x-4 sm:space-x-8 w-full mt-16`,
   polygon: `border border-neutral-900 h-12 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out`,
-  polygonSmall: `flex items-center justify-center sm:hidden w-12 sm:w-16`,
+  polygonSmall: `flex items-center justify-center lg:hidden w-12 sm:w-16`,
   socials: `flex space-x-4 sm:space-x-8`,
   social: `border border-neutral-900 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center hover:bg-neutral-900 transition duration-200 ease-in-out`,
 }
@@ -25,26 +31,29 @@ export default function Links() {
           factoryAddresses[SupportedChainId.POLYGON]
         }`}
         className={style.polygon}
+        aria-label="polygonscan"
       >
-        <div className="hidden sm:flex">
-          <Image src={polygonLogo} height={32} alt="polygon logo" />
-        </div>
+        <PolygonLogo className="h-8 px-4 hidden lg:flex" />
         <div className={style.polygonSmall}>
-          <Image src={polygon} height={32} width={32} alt="polygon logo" />
+          <PolygonIcon className="h-8 w-8" />
         </div>
       </a>
       <div className={style.socials}>
-        <a href={twitterHref} className={style.social}>
-          <Image src={twitter} width={32} height={32} alt="twitter logo" />
+        <a href={twitterHref} className={style.social} aria-label="twitter">
+          <TwitterIcon className="h-8 w-8" />
         </a>
-        <a href={discordHref} className={style.social}>
-          <Image src={discord} width={32} height={32} alt="discord logo" />
+        <a href={discordHref} className={style.social} aria-label="discord">
+          <DiscordIcon className="h-8 w-8" />
         </a>
-        <a href={githubHref} className={style.social}>
-          <Image src={github} width={32} height={32} alt="github logo" />
+        <a href={githubHref} className={style.social} aria-label="github">
+          <GithubIcon className="h-8 w-8" />
         </a>
-        <a href={ercWizardDocsHref} className={style.social}>
-          <Image src={gitbook} width={32} height={32} alt="github logo" />
+        <a
+          href={ercWizardDocsHref}
+          className={style.social}
+          aria-label="documentation"
+        >
+          <GitbookIcon className="h-8 w-8" />
         </a>
       </div>
     </div>

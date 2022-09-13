@@ -27,6 +27,7 @@ const Header = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex md:hidden items-center justify-center bg-white w-16 h-16"
+              aria-label="menu"
             >
               {isOpen ? (
                 <XMarkIcon className="h-8 w-8 text-black" />

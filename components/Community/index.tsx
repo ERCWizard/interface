@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import { twitter, discord, github } from 'assets'
+import { TwitterIcon, DiscordIcon, GithubIcon } from 'assets'
 import { twitterHref, discordHref, githubHref } from 'constants/hrefs'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
@@ -9,7 +8,7 @@ const socials = [
     prefix: 'follow on',
     name: 'github',
     href: githubHref,
-    image: github,
+    icon: GithubIcon,
     description: 'contribute to the open source code',
   },
   {
@@ -17,7 +16,7 @@ const socials = [
     prefix: 'join',
     name: 'discord',
     href: discordHref,
-    image: discord,
+    icon: DiscordIcon,
     description: 'talk, chat, hang out, and stay close with the wizards',
   },
   {
@@ -25,7 +24,7 @@ const socials = [
     prefix: 'follow on',
     name: 'twitter',
     href: twitterHref,
-    image: twitter,
+    icon: TwitterIcon,
     description: 'stay up-to-date with the latest protocol changes',
   },
 ]
@@ -49,14 +48,7 @@ const Community = () => {
             key={social.name}
             className="flex-1 bg-white text-black p-8 space-y-8"
           >
-            <div className="bg-black w-16 h-16 flex items-center justify-center">
-              <Image
-                src={social.image}
-                alt={social.name + ' logo'}
-                width={32}
-                height={32}
-              />
-            </div>
+            <social.icon className="bg-black text-white w-16 h-16 p-4" />
             <p className="text-4xl">{social.name}</p>
             <p className="uppercase">{social.description}</p>
             <a
