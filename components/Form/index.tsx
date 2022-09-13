@@ -67,12 +67,21 @@ const Form = () => {
     hash: data?.hash,
     onError(error) {
       console.log('Transaction Error', error)
-      NProgress.done()
     },
     onSuccess(data) {
+      if (data.status === 0) {
+        const error = new Error('Transaction Failed')
+
+        console.log('Transaction Error', error.message)
+
+        return
+      }
       console.log('Transaction Success', data)
-      NProgress.done()
+
       router.push('/dashboard')
+    },
+    onSettled() {
+      NProgress.done()
     },
   })
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
