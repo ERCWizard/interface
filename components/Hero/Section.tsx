@@ -16,7 +16,7 @@ export default function Section() {
         <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-medium font-Poppins">
           {glitchInText('Create and Deploy Smart Contracts With No-Code')}
         </h1>
-        <p className="uppercase">
+        <p className="uppercase text-justify">
           erc wizard is a decentralized, open-source protocol for creating and
           deploying erc smart contracts without writing a single line of code.
         </p>

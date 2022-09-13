@@ -11,12 +11,12 @@ const Details = () => {
           <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">
             Details
           </h2>
-          <p className="uppercase">
+          <p className="uppercase text-justify">
             create and deploy gas-efficient ready-to-use smart contracts without
             writing a single line of solidity code. launch your next project in
             under a minute, and have full control over it.
           </p>
-          <p className="uppercase">
+          <p className="uppercase text-justify">
             supporting erc-721 and erc-1155 contract generation. developed
             following the erc standards, with secure open-source libraries like
             OpenZeppelin and Chainlink.

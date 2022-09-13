@@ -36,7 +36,7 @@ const Community = () => {
         <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">
           Community
         </h2>
-        <p className="uppercase">
+        <p className="uppercase text-justify">
           ask questions, find answers, and share your experience with others.
           <br />
           join the erc wizard community.
