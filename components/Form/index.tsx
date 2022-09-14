@@ -17,6 +17,7 @@ import WizardFactoryAbi from 'abi/WizardFactory.json'
 import PageTitle from 'components/PageTitle'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
+import TxModal from 'components/TxModal'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -39,6 +40,8 @@ const Form = () => {
 
   const [option, setOption] = useState(Contract.ERC721)
   const [formState, setFormState]: any = useState(contractFormState)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [txHash, setTxHash] = useState('')
 
   const { data: cost, isLoading: isLoadingCost } = useContractRead({
     addressOrName:
@@ -56,10 +59,12 @@ const Form = () => {
       value: cost,
     },
     onError(error) {
-      console.log('ContractWrite Error', error)
+      console.log('Transaction Submit failed', error)
     },
     onSuccess(data) {
-      console.log('ContractWrite Success', data)
+      console.log('Transaction Submitted', data)
+      setTxHash(chain?.blockExplorers?.default.url + '/tx/' + data.hash)
+      setModalIsOpen(true)
       NProgress.start()
     },
   })
@@ -103,86 +108,95 @@ const Form = () => {
     }))
   }
   return (
-    <section className={style.wrapper}>
-      <PageTitle title="create smart contract" />
-      <p className={style.description}>select the contract type</p>
-      <div className={style.options}>
-        {contractOptions.map((contractOption) => (
-          <button
-            className={
-              contractOption == option
-                ? style.optionsButtonActive
-                : style.optionsButton
-            }
-            key={contractOption}
-            disabled={isLoading || waitForTransactionIsLoading}
-            onClick={() => setOption(contractOption)}
-          >
-            {contractOption}
-          </button>
-        ))}
-      </div>
-      <p className={style.description}>fill in all the contract information</p>
-      <form
-        id={option}
-        className={style.form}
-        onSubmit={(event) => submitHandler(event)}
-      >
-        {contractFormInputs[option].map((input: any) => (
-          <div key={option + input.name} className={style.inputWrapper}>
-            <input
-              type={input.type}
-              name={input.name}
-              id={input.name}
-              className={style.input}
-              placeholder=" "
-              min={input.min}
-              max={input.max}
-              minLength={input.minlength}
-              maxLength={input.maxlength}
-              autoComplete="off"
-              required
-              onChange={(e) => formHandler(e)}
-              value={formState[option][input.name]}
-            />
-            <label htmlFor={input.name} className={style.label}>
-              {input.placeholder}
-            </label>
-          </div>
-        ))}
+    <>
+      <section className={style.wrapper}>
+        <PageTitle title="create smart contract" />
+        <p className={style.description}>select the contract type</p>
+        <div className={style.options}>
+          {contractOptions.map((contractOption) => (
+            <button
+              className={
+                contractOption == option
+                  ? style.optionsButtonActive
+                  : style.optionsButton
+              }
+              key={contractOption}
+              disabled={isLoading || waitForTransactionIsLoading}
+              onClick={() => setOption(contractOption)}
+            >
+              {contractOption}
+            </button>
+          ))}
+        </div>
         <p className={style.description}>
-          deployment cost:{' '}
-          {isMounted && cost ? (
-            isLoadingCost ? (
-              <span>fetching...</span>
-            ) : (
-              <span>
-                {ethers.utils.formatEther(cost).slice(0, 6)}{' '}
-                {chain?.nativeCurrency?.symbol}
-              </span>
-            )
-          ) : (
-            <span>fetching failed</span>
-          )}
+          fill in all the contract information
         </p>
-        <button
-          type="submit"
-          form={option}
-          disabled={
-            isMounted &&
-            (!isConnected || isLoading || waitForTransactionIsLoading)
-          }
-          className={style.formButton}
+        <form
+          id={option}
+          className={style.form}
+          onSubmit={(event) => submitHandler(event)}
         >
-          {isMounted &&
-            (isConnected
-              ? isLoading || waitForTransactionIsLoading
-                ? 'deploying...'
-                : 'deploy'
-              : 'connect wallet')}
-        </button>
-      </form>
-    </section>
+          {contractFormInputs[option].map((input: any) => (
+            <div key={option + input.name} className={style.inputWrapper}>
+              <input
+                type={input.type}
+                name={input.name}
+                id={input.name}
+                className={style.input}
+                placeholder=" "
+                min={input.min}
+                max={input.max}
+                minLength={input.minlength}
+                maxLength={input.maxlength}
+                autoComplete="off"
+                required
+                onChange={(e) => formHandler(e)}
+                value={formState[option][input.name]}
+              />
+              <label htmlFor={input.name} className={style.label}>
+                {input.placeholder}
+              </label>
+            </div>
+          ))}
+          <p className={style.description}>
+            deployment cost:{' '}
+            {isMounted && cost ? (
+              isLoadingCost ? (
+                <span>fetching...</span>
+              ) : (
+                <span>
+                  {ethers.utils.formatEther(cost).slice(0, 6)}{' '}
+                  {chain?.nativeCurrency?.symbol}
+                </span>
+              )
+            ) : (
+              <span>fetching failed</span>
+            )}
+          </p>
+          <button
+            type="submit"
+            form={option}
+            disabled={
+              isMounted &&
+              (!isConnected || isLoading || waitForTransactionIsLoading)
+            }
+            className={style.formButton}
+          >
+            {isMounted &&
+              (isConnected
+                ? isLoading || waitForTransactionIsLoading
+                  ? 'deploying...'
+                  : 'deploy'
+                : 'connect wallet')}
+          </button>
+        </form>
+      </section>
+      <TxModal
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        txHash={txHash}
+      />
+    </>
   )
 }
 
