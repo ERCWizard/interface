@@ -24,7 +24,9 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.polygon, chain.polygonMumbai, chain.hardhat],
+  process.env.NODE_ENV === 'development'
+    ? [chain.polygon, chain.polygonMumbai, chain.hardhat, chain.localhost]
+    : [chain.polygon, chain.polygonMumbai],
   [
     alchemyProvider({
       apiKey: process.env.POLYGON_ALCHEMY_API_KEY,
