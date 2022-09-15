@@ -1,10 +1,11 @@
-.Toastify__toast-container {
-  top: 8rem;
-  right: 4rem;
-  padding: 0;
-  margin: 0;
+.Toastify__toast-container,
+.Toastify__toast-container--top-right {
+  top: 8rem !important;
+  right: 4rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .Toastify__toast {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
