@@ -22,6 +22,8 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
+import { TxModalContextProvider } from 'context'
+import TxModal from 'components/TxModal'
 
 const { chains, provider, webSocketProvider } = configureChains(
   process.env.NODE_ENV === 'development'
@@ -107,11 +109,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         `}
       </Script>
       <WagmiConfig client={client}>
-        <div className="bg-black text-white px-8 sm:px-16">
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </div>
+        <TxModalContextProvider>
+          <div className="bg-black text-white px-8 sm:px-16">
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+            <TxModal />
+          </div>
+        </TxModalContextProvider>
       </WagmiConfig>
     </>
   )

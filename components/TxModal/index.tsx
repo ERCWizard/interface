@@ -1,5 +1,7 @@
 import { ArrowUpIcon } from '@heroicons/react/24/outline'
 import Portal from 'components/Portal'
+import { useContext } from 'react'
+import { TxModalContext } from 'context/TxModal'
 
 const style = {
   wrapper: `bg-white/10 fixed top-0 left-0 right-0 bottom-0 z-50`,
@@ -11,16 +13,10 @@ const style = {
   explorer: `uppercase text-sm text-neutral-400 hover:text-white cursor-pointer transition duration-200 ease-in-out`,
 }
 
-export default function TxModal({
-  modalIsOpen,
-  setModalIsOpen,
-  txHash,
-}: {
-  modalIsOpen: boolean
-  setModalIsOpen: (value: boolean) => void
-  txHash: string
-}) {
-  const modalContent = modalIsOpen ? (
+export default function TxModal() {
+  const context = useContext(TxModalContext)
+
+  const modalContent = context?.modalIsOpen ? (
     <div className={style.wrapper}>
       <div className={style.modal}>
         <div className={style.arrowUp}>
@@ -29,13 +25,13 @@ export default function TxModal({
         <div className={style.content}>
           <div className={style.headline}>transaction submitted</div>
           <div className={style.explorer}>
-            <a href={txHash} target="_blank" rel="noopener noreferrer">
+            <a href={context?.txHash} target="_blank" rel="noopener noreferrer">
               view on explorer
             </a>
           </div>
           <button
             className={style.button}
-            onClick={() => setModalIsOpen(false)}
+            onClick={() => context?.setModalIsOpen(false)}
           >
             close
           </button>
