@@ -24,6 +24,8 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import { TxModalContextProvider } from 'context'
 import TxModal from 'components/TxModal'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const { chains, provider, webSocketProvider } = configureChains(
   process.env.NODE_ENV === 'development'
@@ -115,6 +117,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <Footer />
             <TxModal />
+            <ToastContainer />
           </div>
         </TxModalContextProvider>
       </WagmiConfig>

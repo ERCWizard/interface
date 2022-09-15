@@ -2,6 +2,7 @@
 @import url('./animate.css');
 @import url('./utils.css');
 @import url('./nprogress.css');
+@import url('./toastify.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

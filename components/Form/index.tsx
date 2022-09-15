@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { useContext } from 'react'
 import { TxModalContext } from 'context/TxModal'
+import { toast } from 'react-toastify'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -60,6 +61,7 @@ const Form = () => {
     },
     onError(error) {
       console.log('Transaction Submit failed', error)
+      toast.error('Transaction Failed!')
     },
     onSuccess(data) {
       console.log('Transaction Submitted', data)
@@ -74,16 +76,19 @@ const Form = () => {
     hash: data?.hash,
     onError(error) {
       console.log('Transaction Error', error)
+      toast.error('Transaction Error!')
     },
     onSuccess(data) {
       if (data.status === 0) {
         const error = new Error('Transaction Failed')
 
-        console.log('Transaction Error', error.message)
+        console.log('Transaction Failed', error.message)
+        toast.error('Transaction Failed!')
 
         return
       }
       console.log('Transaction Success', data)
+      toast.success('Transaction Success!')
 
       router.push('/dashboard')
     },
