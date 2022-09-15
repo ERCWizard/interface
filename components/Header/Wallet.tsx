@@ -20,8 +20,7 @@ const Wallet = () => {
     <div className={style.wrapper}>
       <button
         id="connect"
-        disabled={!isConnected}
-        onClick={() => disconnect()}
+        onClick={() => isConnected && disconnect()}
         className={style.button}
       >
         {isMounted && isConnected ? (
@@ -44,7 +43,7 @@ const Wallet = () => {
           {connectors.map((connector: any) => (
             <button
               className={style.providerButton}
-              disabled={!connector.ready}
+              disabled={!connector.ready || isLoading}
               key={connector.id}
               onClick={() => connect({ connector })}
             >

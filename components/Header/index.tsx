@@ -43,7 +43,10 @@ const Header = () => {
         </div>
       </header>
       {isOpen && (
-        <div className="fixed top-32 left-0 w-full h-full z-50 bg-black uppercase px-8 sm:px-16 flex flex-col space-y-4">
+        <div
+          id="mobile"
+          className="fixed top-32 left-0 w-full h-full z-50 bg-black uppercase px-8 sm:px-16 flex flex-col space-y-4"
+        >
           <Wallet />
           {navigationMenu.map((el) => (
             <Link key={el.name} href={el.href}>
