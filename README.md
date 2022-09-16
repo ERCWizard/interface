@@ -37,4 +37,15 @@ Start the server
 To run this project, you will need to add the following environment variables to your .env file
 
 `POLYGON_ALCHEMY_API_KEY`
+
 `NEXT_PUBLIC_GOOGLE_ANALYTICS`
+
+`TEST_PRIVATE_KEY`
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run cypress:open || npm run cypress:run
+```
