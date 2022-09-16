@@ -12,7 +12,6 @@ import { injected } from './ethereum'
 import assert = require('assert')
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface ApplicationWindow {
       ethereum: typeof injected
@@ -24,7 +23,6 @@ declare global {
 }
 
 // sets up the injected provider to be a mock ethereum provider with the given mnemonic/index
-// eslint-disable-next-line no-undef
 Cypress.Commands.overwrite(
   'visit',
   (
@@ -40,10 +38,7 @@ Cypress.Commands.overwrite(
     ).then(() => {
       original({
         ...options,
-        url:
-          url.startsWith('/') && url.length > 2 && !url.startsWith('/#')
-            ? `/#${url}`
-            : url,
+        url,
         onBeforeLoad(win) {
           options?.onBeforeLoad?.(win)
           win.ethereum = injected

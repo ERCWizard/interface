@@ -1,11 +1,21 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { navigationMenu } from 'utils/navigationMenu'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid'
 import Wallet from './Wallet'
 
 const Header = () => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => setIsOpen(false))
+    return () => {
+      router.events.off('routeChangeStart', () => setIsOpen(false))
+    }
+  }, [router])
+
   return (
     <>
       <header className="py-8 bg-black/70 backdrop-blur-lg sticky top-0 z-50">

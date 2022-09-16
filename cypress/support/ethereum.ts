@@ -2,7 +2,6 @@
  * Updates cy.visit() to include an injected window.ethereum provider.
  */
 import { Eip1193Bridge } from '@ethersproject/experimental/lib/eip1193-bridge'
-// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Wallet } from '@ethersproject/wallet'
 
@@ -10,8 +9,8 @@ import { Wallet } from '@ethersproject/wallet'
  * hardhat  id 31337 | hex 0x7A69
  * mumbai   id 80001 | hex 0x13881
  */
-const chainId = 31337
-const chainIdHex = '0x7A69'
+const chainId = 80001
+const chainIdHex = '0x13881'
 
 // hardhat prive key
 const TEST_PRIVATE_KEY = `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`
