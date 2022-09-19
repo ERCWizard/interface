@@ -21,7 +21,7 @@ const Header = () => {
       <header className="py-8 bg-black/70 backdrop-blur-lg sticky top-0 z-50">
         <div className="h-16 flex items-center justify-between">
           <Link href="/">
-            <a className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4">
+            <a className="text-xl lg:text-3xl font-Poppins flex items-center space-x-4">
               ERC Wizard
             </a>
           </Link>
