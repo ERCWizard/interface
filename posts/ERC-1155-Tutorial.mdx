@@ -1,0 +1,46 @@
+---
+title: how to create and deploy ERC-1155 smart contract
+description: deploy smart contract and list minted NFT on the opensea marketplace.
+tag: tutorial
+---
+
+<div className="flex items-center justify-center">
+  <video
+    width="100%"
+    height="100%"
+    controls
+    className="border border-neutral-900"
+  >
+    <source src="/video/erc1155-tutorial.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+```json filename="wizard_metadata.json"
+// wizard_metadata.json
+
+{
+  "description": "ERC Wizard Genesis.",
+  "image": "ipfs://QmRHXJv9FhicwGpVArc6QQ3tTW7xFizLu15ajYGcWXu4ii",
+  "name": "Wizard",
+  "attributes": [
+    {
+      "key": "Artist",
+      "trait_type": "Artist",
+      "value": "AI"
+    },
+    {
+      "key": "ERC Wizard",
+      "trait_type": "ERC Wizard",
+      "value": "Wizard"
+    },
+    {
+      "key": "Class",
+      "trait_type": "Class",
+      "value": "First Edition"
+    }
+  ]
+}
+```
+
+[Read More About Metadata Standards](https://docs.opensea.io/docs/metadata-standards)

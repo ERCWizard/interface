@@ -11,4 +11,8 @@ export const navigationMenu = [
     name: 'dashboard',
     href: '/dashboard',
   },
+  {
+    name: 'posts',
+    href: '/posts',
+  },
 ]
