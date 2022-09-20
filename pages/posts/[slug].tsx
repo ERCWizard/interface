@@ -8,21 +8,7 @@ import Seo from 'components/Seo'
 import { postFilePaths, POSTS_PATH } from 'utils/mdx'
 import { ArrowLeftIcon, LinkIcon, TagIcon } from '@heroicons/react/20/solid'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
-
-const components = {
-  pre: (props: any) => (
-    <pre
-      className="bg-neutral-900 p-8 text-sm font-RobotoMono overflow-auto"
-      {...props}
-    />
-  ),
-  a: (props: any) => (
-    <a
-      className="text-neutral-400 hover:text-white flex items-center text-sm sm:text-base"
-      {...props}
-    />
-  ),
-}
+import { components } from 'components/MdxComponents'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
