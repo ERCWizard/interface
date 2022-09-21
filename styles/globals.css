@@ -11,3 +11,9 @@ html,
 body {
   font-family: 'Roboto Mono', monospace;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

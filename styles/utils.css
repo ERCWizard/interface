@@ -126,3 +126,24 @@
 .copy-tooltip:focus::after {
   content: 'copied!';
 }
+
+.form-tooltip {
+  position: relative;
+}
+.form-tooltip::after {
+  content: attr(data-tooltip);
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  right: 2rem;
+  bottom: 0;
+  min-width: 14rem;
+  padding: 1rem;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0);
+  border: solid 1px rgb(23 23 23);
+}
+.form-tooltip:hover::after {
+  display: block;
+}
