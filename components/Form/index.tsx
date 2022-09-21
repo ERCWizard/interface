@@ -20,6 +20,8 @@ import NProgress from 'nprogress'
 import { useContext } from 'react'
 import { TxModalContext } from 'context/TxModal'
 import { toast } from 'react-toastify'
+import { DiscordIcon } from 'assets'
+import { discordHref } from 'constants/hrefs'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -32,6 +34,7 @@ const style = {
   input: `block w-full h-full px-4 text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
   label: `absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-4 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-4`,
   formButton: `bg-white text-black font-medium uppercase px-8 h-16 w-full flex items-center justify-center`,
+  support: `w-fit uppercase text-xs flex items-center text-neutral-400 p-2 hover:text-white hover:bg-neutral-900 cursor-pointer transition duration-200 ease-in-out`,
 }
 
 const Form = () => {
@@ -117,7 +120,13 @@ const Form = () => {
   return (
     <section className={style.wrapper}>
       <PageTitle title="create smart contract" />
-      <p className={style.description}>select the contract type</p>
+      <div className="flex items-center justify-between">
+        <p className={style.description}>select the contract type</p>
+        <a href={discordHref} className={style.support}>
+          <span>support</span>
+          <DiscordIcon className="w-4 h-4 ml-2" />
+        </a>
+      </div>
       <div className={style.options}>
         {contractOptions.map((contractOption) => (
           <button
