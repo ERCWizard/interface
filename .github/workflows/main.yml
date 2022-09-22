@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lint: npm run lint
+
+  cypress-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3000'
+        env:
+          POLYGON_ALCHEMY_API_KEY: ${{ secrets.POLYGON_ALCHEMY_API_KEY }}
+          TEST_PRIVATE_KEY: ${{ secrets.TEST_PRIVATE_KEY }}
