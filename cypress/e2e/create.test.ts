@@ -1,10 +1,7 @@
 import { ERC721Inputs, ERC1155Inputs } from '../utils/inputs'
-import {
-  connectWalletDesktop,
-  connectWalletMobile,
-} from '../utils/connectWallet'
+import { connectWalletDesktop, connectWalletMobile } from '../utils/connectWallet'
 
-const wait = 6000 // hardhat mining interval is set to 5 sec
+const wait = 30000
 
 describe('Create Contract', () => {
   context('Desktop ERC721', () => {

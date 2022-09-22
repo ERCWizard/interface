@@ -11,26 +11,24 @@ import { formatAddress } from '../../utils/formatAddress'
  * hardhat  id 31337 | hex 0x7A69
  * mumbai   id 80001 | hex 0x13881
  */
-const chainId = 31337
-const chainIdHex = '0x7A69'
+const chainId = 80001
+const chainIdHex = '0x13881'
 
-// hardhat prive key
+const rpcProviders = {
+  31337: 'http://127.0.0.1:8545',
+  80001: `https://polygon-mumbai.g.alchemy.com/v2/${Cypress.env('POLYGON_ALCHEMY_API_KEY')}`,
+}
+
+// test private key || hardhat private key
 const TEST_PRIVATE_KEY = Cypress.env('TEST_PRIVATE_KEY')
 
 // address of the above key
 export const TEST_ADDRESS_NEVER_USE = new Wallet(TEST_PRIVATE_KEY).address
 
 // format wallet address
-export const TEST_ADDRESS_NEVER_USE_SHORTENED = formatAddress(
-  TEST_ADDRESS_NEVER_USE
-)
+export const TEST_ADDRESS_NEVER_USE_SHORTENED = formatAddress(TEST_ADDRESS_NEVER_USE)
 
-const rpcProvider =
-  chainId === 31337
-    ? 'http://127.0.0.1:8545'
-    : `https://polygon-mumbai.g.alchemy.com/v2/${Cypress.env(
-        'POLYGON_ALCHEMY_API_KEY'
-      )}`
+const rpcProvider = rpcProviders[chainId]
 
 const provider = new JsonRpcProvider(rpcProvider, chainId)
 
@@ -45,8 +43,7 @@ export const injected = new (class extends Eip1193Bridge {
   }
   async send(...args: any[]) {
     console.debug('send called', ...args)
-    const isCallbackForm =
-      typeof args[0] === 'object' && typeof args[1] === 'function'
+    const isCallbackForm = typeof args[0] === 'object' && typeof args[1] === 'function'
     let callback
     let method
     let params
@@ -76,29 +73,21 @@ export const injected = new (class extends Eip1193Bridge {
     try {
       // If from is present on eth_call it errors, removing it makes the library set
       // from as the connected wallet which works fine
-      if (params && params.length && params[0].from && method === 'eth_call')
-        delete params[0].from
+      if (params && params.length && params[0].from && method === 'eth_call') delete params[0].from
       let result
       // For sending a transaction if we call send it will error
       // as it wants gasLimit in sendTransaction but hexlify sets the property gas
       // to gasLimit which makes sensd transaction error.
       // This have taken the code from the super method for sendTransaction and altered
       // it slightly to make it work with the gas limit issues.
-      if (
-        params &&
-        params.length &&
-        params[0].from &&
-        method === 'eth_sendTransaction'
-      ) {
+      if (params && params.length && params[0].from && method === 'eth_sendTransaction') {
         // Hexlify will not take gas, must be gasLimit, set this property to be gasLimit
         params[0].gasLimit = params[0].gas
         delete params[0].gas
         // If from is present on eth_sendTransaction it errors, removing it makes the library set
         // from as the connected wallet which works fine
         delete params[0].from
-        const req = ethers.providers.JsonRpcProvider.hexlifyTransaction(
-          params[0]
-        )
+        const req = ethers.providers.JsonRpcProvider.hexlifyTransaction(params[0])
         // Hexlify sets the gasLimit property to be gas again and send transaction requires gasLimit
         req.gasLimit = req.gas
         delete req.gas
