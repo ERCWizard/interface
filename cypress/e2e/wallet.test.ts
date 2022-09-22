@@ -70,6 +70,12 @@ describe('Connect Wallet Button', () => {
       cy.get('#mobile').should('not.exist')
     })
 
+    it('Close Menu On Route Change', () => {
+      cy.get('[aria-label="menu"]').click()
+      cy.get('#mobile > [href="/create"]').click()
+      cy.get('#mobile').should('not.exist')
+    })
+
     it('Check Wallet Providers', () => {
       cy.get('[aria-label="menu"]').click()
       cy.get('#mobile > .group').realTouch()
@@ -92,9 +98,7 @@ describe('Connect Wallet Button', () => {
     })
 
     it('Displays Wallet Address', () => {
-      cy.get('#mobile > .group > #connect').contains(
-        TEST_ADDRESS_NEVER_USE_SHORTENED
-      )
+      cy.get('#mobile > .group > #connect').contains(TEST_ADDRESS_NEVER_USE_SHORTENED)
     })
 
     it('Disconnect Wallet', () => {
@@ -113,11 +117,6 @@ describe('Connect Wallet Button', () => {
         cy.wrap(el).contains(providers[index].contains).should('be.disabled')
       })
       cy.get('.walletconnect-modal__close__wrapper').click()
-    })
-
-    it('Close Menu On Route Change', () => {
-      cy.get('#mobile > [href="/create"]').click()
-      cy.get('#mobile').should('not.exist')
     })
   })
 })
