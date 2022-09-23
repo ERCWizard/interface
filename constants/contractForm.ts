@@ -72,8 +72,7 @@ export const contractFormInputs: ContractFormInputs = {
       minlength: '1',
       maxlength: '',
       autoComplete: 'off',
-      tooltip:
-        'This sets the max mint amount by address per single transaction',
+      tooltip: 'This sets the max mint amount by address per single transaction',
     },
     {
       type: 'text',
@@ -84,8 +83,7 @@ export const contractFormInputs: ContractFormInputs = {
       minlength: '1',
       maxlength: '',
       autoComplete: 'off',
-      tooltip:
-        'This sets the hidden metadata uri and will be used when the revealed state is set to false',
+      tooltip: 'This sets the hidden metadata uri and will be used when the revealed state is set to false',
     },
     {
       type: 'text',
@@ -96,8 +94,7 @@ export const contractFormInputs: ContractFormInputs = {
       minlength: '1',
       maxlength: '',
       autoComplete: 'off',
-      tooltip:
-        'This sets the metadata uri prefix and will be used when the revealed state is set to true',
+      tooltip: 'This sets the metadata uri prefix and will be used when the revealed state is set to true',
     },
     {
       type: 'text',

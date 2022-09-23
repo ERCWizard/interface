@@ -25,17 +25,10 @@ declare global {
 // sets up the injected provider to be a mock ethereum provider with the given mnemonic/index
 Cypress.Commands.overwrite(
   'visit',
-  (
-    original,
-    url: string | Partial<Cypress.VisitOptions>,
-    options?: Partial<Cypress.VisitOptions>
-  ) => {
+  (original, url: string | Partial<Cypress.VisitOptions>, options?: Partial<Cypress.VisitOptions>) => {
     assert(typeof url === 'string')
 
-    cy.intercept(
-      '/service-worker.js',
-      options?.serviceWorker ? undefined : { statusCode: 404 }
-    ).then(() => {
+    cy.intercept('/service-worker.js', options?.serviceWorker ? undefined : { statusCode: 404 }).then(() => {
       original({
         ...options,
         url,

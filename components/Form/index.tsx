@@ -1,11 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import {
-  useAccount,
-  useNetwork,
-  useContractRead,
-  useContractWrite,
-  useWaitForTransaction,
-} from 'wagmi'
+import { ChangeEvent, FormEvent, useState, useContext } from 'react'
+import { useAccount, useNetwork, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi'
 import { ethers } from 'ethers'
 import { contractFormInputs, contractFormState } from 'constants/contractForm'
 import { contractOptions } from 'constants/contractOptions'
@@ -17,7 +11,6 @@ import WizardFactoryAbi from 'abi/WizardFactory.json'
 import PageTitle from 'components/PageTitle'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
-import { useContext } from 'react'
 import { TxModalContext } from 'context/TxModal'
 import { toast } from 'react-toastify'
 import { DiscordIcon } from 'assets'
@@ -50,15 +43,13 @@ const Form = () => {
   const [formState, setFormState]: any = useState(contractFormState)
 
   const { data: cost, isLoading: isLoadingCost } = useContractRead({
-    addressOrName:
-      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
+    addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: 'getCost',
   })
   const { data, isLoading, write } = useContractWrite({
     mode: 'recklesslyUnprepared',
-    addressOrName:
-      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
+    addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: contractFunctionName[option],
     overrides: {
@@ -70,9 +61,7 @@ const Form = () => {
     },
     onSuccess(data) {
       console.log('Transaction Submitted', data)
-      context?.setTxHash(
-        chain?.blockExplorers?.default.url + '/tx/' + data.hash
-      )
+      context?.setTxHash(chain?.blockExplorers?.default.url + '/tx/' + data.hash)
       context?.setModalIsOpen(true)
       NProgress.start()
     },
@@ -132,11 +121,7 @@ const Form = () => {
       <div className={style.options}>
         {contractOptions.map((contractOption) => (
           <button
-            className={
-              contractOption == option
-                ? style.optionsButtonActive
-                : style.optionsButton
-            }
+            className={contractOption == option ? style.optionsButtonActive : style.optionsButton}
             key={contractOption}
             disabled={isLoading || waitForTransactionIsLoading}
             onClick={() => setOption(contractOption)}
@@ -146,11 +131,7 @@ const Form = () => {
         ))}
       </div>
       <p className={style.description}>fill in all the contract information</p>
-      <form
-        id={option}
-        className={style.form}
-        onSubmit={(event) => submitHandler(event)}
-      >
+      <form id={option} className={style.form} onSubmit={(event) => submitHandler(event)}>
         {contractFormInputs[option].map((input: any) => (
           <div key={option + input.name} className={style.inputWrapper}>
             <input
@@ -172,10 +153,7 @@ const Form = () => {
               {input.placeholder}
             </label>
             <div className={style.inputDescription}>
-              <span
-                className={style.inputDescriptionIcon}
-                data-tooltip={input.tooltip}
-              >
+              <span className={style.inputDescriptionIcon} data-tooltip={input.tooltip}>
                 {'?'}
               </span>
             </div>
@@ -188,8 +166,7 @@ const Form = () => {
               <span>fetching...</span>
             ) : (
               <span>
-                {ethers.utils.formatEther(cost).slice(0, 6)}{' '}
-                {chain?.nativeCurrency?.symbol}
+                {ethers.utils.formatEther(cost).slice(0, 6)} {chain?.nativeCurrency?.symbol}
               </span>
             )
           ) : (
@@ -199,18 +176,11 @@ const Form = () => {
         <button
           type="submit"
           form={option}
-          disabled={
-            isMounted &&
-            (!isConnected || isLoading || waitForTransactionIsLoading)
-          }
+          disabled={isMounted && (!isConnected || isLoading || waitForTransactionIsLoading)}
           className={style.formButton}
         >
           {isMounted &&
-            (isConnected
-              ? isLoading || waitForTransactionIsLoading
-                ? 'deploying...'
-                : 'deploy'
-              : 'connect wallet')}
+            (isConnected ? (isLoading || waitForTransactionIsLoading ? 'deploying...' : 'deploy') : 'connect wallet')}
         </button>
       </form>
     </section>

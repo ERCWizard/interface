@@ -1,9 +1,4 @@
-import {
-  twitterHref,
-  discordHref,
-  githubHref,
-  ercWizardDocsHref,
-} from 'constants/hrefs'
+import { twitterHref, discordHref, githubHref, ercWizardDocsHref } from 'constants/hrefs'
 
 const Footer = () => {
   return (

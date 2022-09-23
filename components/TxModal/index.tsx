@@ -29,10 +29,7 @@ export default function TxModal() {
               view on explorer
             </a>
           </div>
-          <button
-            className={style.button}
-            onClick={() => context?.setModalIsOpen(false)}
-          >
+          <button className={style.button} onClick={() => context?.setModalIsOpen(false)}>
             close
           </button>
         </div>

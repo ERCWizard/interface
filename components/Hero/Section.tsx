@@ -17,8 +17,8 @@ export default function Section() {
           {glitchInText('Create and Deploy Smart Contracts With No-Code')}
         </h1>
         <p className="uppercase text-justify">
-          erc wizard is a decentralized, open-source protocol for creating and
-          deploying erc smart contracts without writing a single line of code.
+          erc wizard is a decentralized, open-source protocol for creating and deploying erc smart contracts without
+          writing a single line of code.
         </p>
         <div className="uppercase space-y-2">
           <span className="flex items-center space-x-4">
@@ -63,15 +63,9 @@ export default function Section() {
           loop={true}
           modules={[EffectCreative, Autoplay]}
         >
-          <SwiperSlide className="bg-black text-white">
-            {formatCode(wizardFactory)}
-          </SwiperSlide>
-          <SwiperSlide className="bg-black text-white">
-            {formatCode(wizardERC721)}
-          </SwiperSlide>
-          <SwiperSlide className="bg-black text-white">
-            {formatCode(wizardERC1155)}
-          </SwiperSlide>
+          <SwiperSlide className="bg-black text-white">{formatCode(wizardFactory)}</SwiperSlide>
+          <SwiperSlide className="bg-black text-white">{formatCode(wizardERC721)}</SwiperSlide>
+          <SwiperSlide className="bg-black text-white">{formatCode(wizardERC1155)}</SwiperSlide>
         </Swiper>
       </div>
     </div>

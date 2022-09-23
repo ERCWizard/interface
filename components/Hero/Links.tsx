@@ -1,19 +1,7 @@
-import {
-  twitterHref,
-  discordHref,
-  githubHref,
-  ercWizardDocsHref,
-} from 'constants/hrefs'
+import { twitterHref, discordHref, githubHref, ercWizardDocsHref } from 'constants/hrefs'
 import { factoryAddresses } from 'constants/addresses'
 import { SupportedChainId } from 'constants/chains'
-import {
-  PolygonIcon,
-  PolygonLogo,
-  TwitterIcon,
-  DiscordIcon,
-  GithubIcon,
-  GitbookIcon,
-} from 'assets'
+import { PolygonIcon, PolygonLogo, TwitterIcon, DiscordIcon, GithubIcon, GitbookIcon } from 'assets'
 
 const style = {
   main: `flex justify-between space-x-4 sm:space-x-8 w-full mt-16`,
@@ -27,9 +15,7 @@ export default function Links() {
   return (
     <div className={style.main}>
       <a
-        href={`https://polygonscan.com/address/${
-          factoryAddresses[SupportedChainId.POLYGON]
-        }`}
+        href={`https://polygonscan.com/address/${factoryAddresses[SupportedChainId.POLYGON]}`}
         className={style.polygon}
         aria-label="polygonscan"
       >
@@ -48,11 +34,7 @@ export default function Links() {
         <a href={githubHref} className={style.social} aria-label="github">
           <GithubIcon className="h-8 w-8" />
         </a>
-        <a
-          href={ercWizardDocsHref}
-          className={style.social}
-          aria-label="documentation"
-        >
+        <a href={ercWizardDocsHref} className={style.social} aria-label="documentation">
           <GitbookIcon className="h-8 w-8" />
         </a>
       </div>

@@ -26,8 +26,7 @@ const Contracts = () => {
   const { chain } = useNetwork()
   const { address } = useAccount()
   const { data, isLoading } = useContractRead({
-    addressOrName:
-      chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
+    addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
     functionName: 'getCreatedContracts',
     args: address,
@@ -64,9 +63,7 @@ const Contracts = () => {
             {isMounted && !isLoading ? (
               data?.map((contract) => (
                 <tr key={contract._address} className={style.contract}>
-                  <td className="px-4 uppercase">
-                    {formatContractType(contract._type)}
-                  </td>
+                  <td className="px-4 uppercase">{formatContractType(contract._type)}</td>
                   <td className="px-4 w-full">
                     <a
                       href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}`}
@@ -80,9 +77,7 @@ const Contracts = () => {
                   </td>
                   <td className="px-4 uppercase text-center">
                     <button
-                      onClick={() =>
-                        copy(contractAbi[formatContractType(contract._type)])
-                      }
+                      onClick={() => copy(contractAbi[formatContractType(contract._type)])}
                       className={`${style.contractCopy} copy-tooltip`}
                     >
                       copy

@@ -27,10 +27,7 @@
   bottom: -2rem;
   background-color: rgba(229, 229, 247, 0);
   opacity: 1;
-  background-image: radial-gradient(
-    #ffffff 0.45px,
-    rgba(229, 229, 247, 0) 0.45px
-  );
+  background-image: radial-gradient(#ffffff 0.45px, rgba(229, 229, 247, 0) 0.45px);
   background-size: 9px 9px;
 }
 
@@ -45,10 +42,7 @@
   bottom: 0;
   background-color: rgba(229, 229, 247, 0);
   opacity: 1;
-  background-image: radial-gradient(
-    #ffffff 0.45px,
-    rgba(229, 229, 247, 0) 0.45px
-  );
+  background-image: radial-gradient(#ffffff 0.45px, rgba(229, 229, 247, 0) 0.45px);
   background-size: 9px 9px;
 }
 

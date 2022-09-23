@@ -7,10 +7,7 @@ type Props = {
   props?: React.ComponentProps<'svg'>
 }
 
-function PolygonLogo(
-  { title, titleId, ...props }: Props,
-  svgRef: any
-): JSX.Element {
+function PolygonLogo({ title, titleId, ...props }: Props, svgRef: any): JSX.Element {
   return React.createElement(
     'svg',
     Object.assign(

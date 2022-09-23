@@ -18,11 +18,7 @@ const Wallet = () => {
 
   return (
     <div className={style.wrapper}>
-      <button
-        id="connect"
-        onClick={() => isConnected && disconnect()}
-        className={style.button}
-      >
+      <button id="connect" onClick={() => isConnected && disconnect()} className={style.button}>
         {isMounted && isConnected ? (
           <>
             <p className="w-full">
@@ -47,9 +43,7 @@ const Wallet = () => {
               key={connector.id}
               onClick={() => connect({ connector })}
             >
-              {!connector.ready
-                ? `${connector.name} (install)`
-                : connector.name}
+              {!connector.ready ? `${connector.name} (install)` : connector.name}
             </button>
           ))}
         </div>

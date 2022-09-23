@@ -9,11 +9,7 @@ export interface ContextProps {
 
 export const TxModalContext = createContext<ContextProps | null>(null)
 
-export default function TxModalContextProvider({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function TxModalContextProvider({ children }: { children: ReactNode }) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [txHash, setTxHash] = useState('')
 

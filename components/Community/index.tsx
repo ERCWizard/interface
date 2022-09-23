@@ -33,9 +33,7 @@ const Community = () => {
   return (
     <section className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24">
       <div className="flex flex-col space-y-8 w-full">
-        <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">
-          Community
-        </h2>
+        <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">Community</h2>
         <p className="uppercase text-justify">
           ask questions, find answers, and share your experience with others.
           <br />
@@ -44,10 +42,7 @@ const Community = () => {
       </div>
       <div className="flex flex-wrap gap-16 my-8">
         {socials.map((social) => (
-          <div
-            key={social.name}
-            className="flex-1 bg-white text-black p-8 space-y-8"
-          >
+          <div key={social.name} className="flex-1 bg-white text-black p-8 space-y-8">
             <social.icon className="bg-black text-white w-16 h-16 p-4" />
             <p className="text-4xl">{social.name}</p>
             <p className="uppercase">{social.description}</p>

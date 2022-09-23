@@ -1,0 +1,21 @@
+# General Ignores
+.gitignore
+.eslintcache
+.eslintignore
+node_modules/
+public/
+
+# Artifacts
+.next/
+out/
+
+# IDE
+.vscode
+
+# Specific Ignores
+*.svg
+*.ico
+*.json
+*.md
+*.log
+*.lock

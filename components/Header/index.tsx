@@ -21,18 +21,14 @@ const Header = () => {
       <header className="py-8 bg-black/70 backdrop-blur-lg sticky top-0 z-50">
         <div className="h-16 flex items-center justify-between">
           <Link href="/">
-            <a className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4">
-              ERC Wizard
-            </a>
+            <a className="text-2xl sm:text-3xl font-Poppins flex items-center space-x-4">ERC Wizard</a>
           </Link>
           <nav>
             <div className="hidden md:flex items-center">
               <div className="space-x-8 mr-8 uppercase hover:text-neutral-400">
                 {navigationMenu.map((el) => (
                   <Link key={el.name} href={el.href}>
-                    <a className="hover:text-white transition ease-in-out duration-200">
-                      {el.name}
-                    </a>
+                    <a className="hover:text-white transition ease-in-out duration-200">{el.name}</a>
                   </Link>
                 ))}
               </div>
@@ -43,11 +39,7 @@ const Header = () => {
               className="flex md:hidden items-center justify-center bg-white w-16 h-16"
               aria-label="menu"
             >
-              {isOpen ? (
-                <XMarkIcon className="h-8 w-8 text-black" />
-              ) : (
-                <Bars3Icon className="h-8 w-8 text-black" />
-              )}
+              {isOpen ? <XMarkIcon className="h-8 w-8 text-black" /> : <Bars3Icon className="h-8 w-8 text-black" />}
             </button>
           </nav>
         </div>
