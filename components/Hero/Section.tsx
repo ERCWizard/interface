@@ -41,7 +41,7 @@ export default function Section() {
           </a>
         </Link>
       </div>
-      <div className="w-full lg:flex-1 bg-white border border-neutral-900 relative polka-l-b square-r-t">
+      <div className="w-full lg:flex-1 bg-black border border-neutral-900 relative">
         <Swiper
           className="h-96 w-full lg:h-[400px] lg:w-[508px] xl:h-[500px] xl:w-[608px] text-xs"
           grabCursor={true}

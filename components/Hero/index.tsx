@@ -8,7 +8,7 @@ const Hero = () => {
       <Section />
       <Links />
       <div className="flex items-end">
-        <div className="border border-white h-16 w-16 flex items-center justify-center my-12 animate-bounce">
+        <div className="border border-neutral-900 h-16 w-16 flex items-center justify-center my-12 animate-bounce">
           <ArrowDownIcon className="h-8 w-8" />
         </div>
       </div>

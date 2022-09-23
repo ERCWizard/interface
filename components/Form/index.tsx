@@ -13,8 +13,8 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { TxModalContext } from 'context/TxModal'
 import { toast } from 'react-toastify'
-import { DiscordIcon } from 'assets'
-import { discordHref } from 'constants/hrefs'
+import { DiscordIcon, GitbookIcon } from 'assets'
+import { discordHref, ercWizardDocsHref } from 'constants/hrefs'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
@@ -113,10 +113,16 @@ const Form = () => {
       <PageTitle title="create smart contract" />
       <div className="flex items-center justify-between">
         <p className={style.description}>select the contract type</p>
-        <a href={discordHref} className={style.support}>
-          <span>support</span>
-          <DiscordIcon className="w-4 h-4 ml-2" />
-        </a>
+        <div className="flex">
+          <a href={ercWizardDocsHref} className={style.support}>
+            <span>details</span>
+            <GitbookIcon className="w-4 h-4 ml-2" />
+          </a>
+          <a href={discordHref} className={style.support}>
+            <span>support</span>
+            <DiscordIcon className="w-4 h-4 ml-2" />
+          </a>
+        </div>
       </div>
       <div className={style.options}>
         {contractOptions.map((contractOption) => (
