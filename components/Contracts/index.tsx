@@ -5,7 +5,7 @@ import { formatContractType } from 'utils/formatContractType'
 import { WizardFactoryAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { ArrowUpRightIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
 import PageTitle from 'components/PageTitle'
 
 const style = {
@@ -16,7 +16,7 @@ const style = {
   contract: `h-16 whitespace-nowrap bg-neutral-900/70 hover:bg-neutral-900 ease-in duration-150`,
   contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
   contractAddress: `flex items-center text-neutral-400 hover:text-white ease-in duration-150`,
-  contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900`,
+  contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900/70`,
   skeleton: `w-full h-4 bg-neutral-800 animate-pulse`,
 }
 
@@ -37,6 +37,8 @@ const Contracts = () => {
       console.log('Success')
     },
   })
+  console.log(data)
+
   return (
     <section className={style.wrapper}>
       <PageTitle title="explore deployed contracts" />
@@ -48,7 +50,7 @@ const Contracts = () => {
               <th scope="col" className="px-4 font-normal w-24">
                 type
               </th>
-              <th scope="col" className="px-4 font-normal">
+              <th scope="col" className="px-4 font-normal whitespace-nowrap">
                 contract address
               </th>
               <th scope="col" className="px-4 font-normal w-28 text-center">
@@ -97,17 +99,29 @@ const Contracts = () => {
                 </tr>
               ))
             ) : (
-              <tr className={style.contractSkeleton}>
-                {Array.from({ length: 4 }, (_, i) => (
-                  <td className="px-4" key={i}>
-                    <div className={style.skeleton} />
-                  </td>
+              <>
+                {Array.from({ length: 6 }, (_, i) => (
+                  <tr className={style.contractSkeleton} key={i + 'tr'}>
+                    {Array.from({ length: 4 }, (_, i) => (
+                      <td className="px-4" key={i}>
+                        <div className={style.skeleton} />
+                      </td>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
+              </>
             )}
           </tbody>
         </table>
       </div>
+      {isMounted && !isLoading && data?.length === 0 && (
+        <div className="flex items-center justify-center uppercase text-neutral-400 bg-neutral-900/70 p-4 w-full">
+          <span className="w-5 h-5 mr-4">
+            <InformationCircleIcon className="w-5 h-5 mr-4" />
+          </span>
+          <span>Couldn&apos;t find any contracts matching your address</span>
+        </div>
+      )}
     </section>
   )
 }
