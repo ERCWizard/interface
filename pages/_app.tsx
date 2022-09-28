@@ -13,6 +13,7 @@ import { factoryAddresses } from 'constants/addresses'
 import WizardFactoryAbi from 'abi/WizardFactory.json'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
+import Notification from 'components/Notification'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import { TxModalContextProvider } from 'context'
@@ -104,6 +105,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Script>
       <WagmiConfig client={client}>
         <TxModalContextProvider>
+          <Notification />
           <div className="bg-black text-white px-8 sm:px-16">
             <Header />
             <Component {...pageProps} />

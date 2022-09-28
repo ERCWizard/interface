@@ -13,3 +13,5 @@ export const factoryAddresses: factoryAddressesType = {
   [SupportedChainId.MUMBAI]: MUMBAI_TESTNET_FACTORY_ADDRESS,
   [SupportedChainId.HARDHAT]: HARDHAT_TESTNET_FACTORY_ADDRESS,
 }
+
+export const SUPPORT_ADDRESS = '0xF4625d31ABAB1FFe7098B4F03C4311bA10c650e0'

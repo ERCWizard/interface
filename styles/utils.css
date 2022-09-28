@@ -92,14 +92,15 @@
 }
 
 .copy-tooltip::after {
-  content: 'copy to clipboard';
+  content: attr(data-value);
+  text-transform: uppercase;
   display: none;
   position: absolute;
   z-index: 9999;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  width: fit-content;
+  width: max-content;
   padding: 1rem;
   font-size: 12px;
   text-align: center;
@@ -140,4 +141,17 @@
 }
 .form-tooltip:hover::after {
   display: block;
+}
+
+.cool-gradient {
+  background: linear-gradient(
+    89.84deg,
+    rgba(230, 36, 174, 0.16) 0.34%,
+    rgba(94, 58, 255, 0.16) 16.96%,
+    rgba(10, 136, 255, 0.16) 34.66%,
+    rgba(75, 191, 80, 0.16) 50.12%,
+    rgba(137, 206, 0, 0.16) 66.22%,
+    rgba(239, 183, 0, 0.16) 82%,
+    rgba(246, 73, 0, 0.16) 99.9%
+  );
 }

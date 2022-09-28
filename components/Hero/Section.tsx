@@ -8,11 +8,12 @@ import { wizardFactory, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 import { formatCode } from 'utils/formatCode'
 import { glitchInText } from 'utils/animate'
 import { ArrowRightIcon, ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { discordHref } from 'constants/hrefs'
 
 export default function Section() {
   return (
     <div className="flex lg:flex-row flex-col items-center w-full gap-16 mt-8">
-      <div className="flex-1 space-y-8">
+      <div className="flex-1 space-y-4">
         <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-medium font-Poppins">
           {glitchInText('Create and Deploy Smart Contracts With No-Code')}
         </h1>
@@ -40,6 +41,12 @@ export default function Section() {
             <ArrowUpRightIcon className="h-5 w-5" />
           </a>
         </Link>
+        <div className="text-sm uppercase">
+          Looking for a more personalised smart contract?{' '}
+          <a className="underline" href={discordHref}>
+            Please contact us!
+          </a>
+        </div>
       </div>
       <div className="w-full lg:flex-1 bg-black border border-neutral-900 relative">
         <Swiper

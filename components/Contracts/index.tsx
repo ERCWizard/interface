@@ -79,6 +79,7 @@ const Contracts = () => {
                   </td>
                   <td className="px-4 uppercase text-center">
                     <button
+                      data-value="copy abi to clipboard"
                       onClick={() => copy(contractAbi[formatContractType(contract._type)])}
                       className={`${style.contractCopy} copy-tooltip`}
                     >
