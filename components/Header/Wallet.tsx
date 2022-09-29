@@ -17,7 +17,7 @@ const Wallet = () => {
   const isMounted = useIsMounted()
 
   return (
-    <div className={style.wrapper}>
+    <div className={style.wrapper} data-cy="wallet">
       <button id="connect" onClick={() => isConnected && disconnect()} className={style.button}>
         {isMounted && isConnected ? (
           <>

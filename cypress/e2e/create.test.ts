@@ -1,8 +1,6 @@
 import { ERC721Inputs, ERC1155Inputs } from '../utils/inputs'
 import { connectWalletDesktop, connectWalletMobile } from '../utils/connectWallet'
 
-const wait = 30000
-
 describe('Create Contract', () => {
   context('Desktop ERC721', () => {
     before(() => {
@@ -21,8 +19,11 @@ describe('Create Contract', () => {
       cy.get('#erc721 > button').contains('connect wallet')
     })
 
-    it('Active Submit Button', () => {
+    it('Connect Wallet', () => {
       connectWalletDesktop()
+    })
+
+    it('Active Submit Button', () => {
       cy.get('#erc721 > button').contains('deploy')
     })
 
@@ -37,17 +38,9 @@ describe('Create Contract', () => {
       })
     })
 
-    it('Deploy Contract', () => {
-      cy.get('#erc721 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('exist')
-      cy.get('.space-y-4 > .capitalize').contains('transaction submitted')
-      cy.get('.space-y-4 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('not.exist')
-      cy.get('#erc721 > button').contains('deploying...')
-      cy.wait(wait)
-      cy.location('pathname').should('eq', '/dashboard')
-      cy.get('tbody > :last-child').should('exist')
-      cy.get('tbody > :last-child > td:first-child').contains('erc721')
+    it('Active Submit Button', () => {
+      connectWalletDesktop()
+      cy.get('#erc721 > button').contains('deploy').should('not.be.disabled')
     })
   })
 
@@ -88,17 +81,9 @@ describe('Create Contract', () => {
       })
     })
 
-    it('Deploy Contract', () => {
-      cy.get('#erc1155 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('exist')
-      cy.get('.space-y-4 > .capitalize').contains('transaction submitted')
-      cy.get('.space-y-4 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('not.exist')
-      cy.get('#erc1155 > button').contains('deploying...')
-      cy.wait(wait)
-      cy.location('pathname').should('eq', '/dashboard')
-      cy.get('tbody > :last-child').should('exist')
-      cy.get('tbody > :last-child > td:first-child').contains('erc1155')
+    it('Active Submit Button', () => {
+      connectWalletDesktop()
+      cy.get('#erc1155 > button').contains('deploy').should('not.be.disabled')
     })
   })
 
@@ -135,17 +120,9 @@ describe('Create Contract', () => {
       })
     })
 
-    it('Deploy Contract', () => {
-      cy.get('#erc721 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('exist')
-      cy.get('.space-y-4 > .capitalize').contains('transaction submitted')
-      cy.get('.space-y-4 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('not.exist')
-      cy.get('#erc721 > button').contains('deploying...')
-      cy.wait(wait)
-      cy.location('pathname').should('eq', '/dashboard')
-      cy.get('tbody > :last-child').should('exist')
-      cy.get('tbody > :last-child > td:first-child').contains('erc721')
+    it('Active Submit Button', () => {
+      connectWalletMobile()
+      cy.get('#erc721 > button').contains('deploy').should('not.be.disabled')
     })
   })
 
@@ -186,17 +163,9 @@ describe('Create Contract', () => {
       })
     })
 
-    it('Deploy Contract', () => {
-      cy.get('#erc1155 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('exist')
-      cy.get('.space-y-4 > .capitalize').contains('transaction submitted')
-      cy.get('.space-y-4 > button').click()
-      cy.get('.space-y-4 > .capitalize').should('not.exist')
-      cy.get('#erc1155 > button').contains('deploying...')
-      cy.wait(wait)
-      cy.location('pathname').should('eq', '/dashboard')
-      cy.get('tbody > :last-child').should('exist')
-      cy.get('tbody > :last-child > td:first-child').contains('erc1155')
+    it('Active Submit Button', () => {
+      connectWalletMobile()
+      cy.get('#erc1155 > button').contains('deploy').should('not.be.disabled')
     })
   })
 })

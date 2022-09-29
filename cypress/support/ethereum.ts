@@ -10,13 +10,15 @@ import { formatAddress } from '../../utils/formatAddress'
 /**
  * hardhat  id 31337 | hex 0x7A69
  * mumbai   id 80001 | hex 0x13881
+ * polygon  id 137   | hex 0x89
  */
-const chainId = 80001
-const chainIdHex = '0x13881'
+const chainId = 137
+const chainIdHex = '0x89'
 
 const rpcProviders = {
   31337: 'http://127.0.0.1:8545',
   80001: `https://polygon-mumbai.g.alchemy.com/v2/${Cypress.env('POLYGON_ALCHEMY_API_KEY')}`,
+  137: `https://polygon-mainnet.g.alchemy.com/v2/${Cypress.env('POLYGON_ALCHEMY_API_KEY')}`,
 }
 
 // test private key || hardhat private key

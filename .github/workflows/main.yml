@@ -30,6 +30,7 @@ jobs:
           build: npm run build
           start: npm start
           wait-on: 'http://localhost:3000'
+          browser: chrome
         env:
           POLYGON_ALCHEMY_API_KEY: ${{ secrets.POLYGON_ALCHEMY_API_KEY }}
           TEST_PRIVATE_KEY: ${{ secrets.TEST_PRIVATE_KEY }}
