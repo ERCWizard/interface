@@ -15,6 +15,7 @@ const style = {
   thead: `uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800`,
   contract: `h-16 whitespace-nowrap bg-neutral-900/70 hover:bg-neutral-900 ease-in duration-150`,
   contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
+  contractWrite: `flex items-center justify-center text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
   contractAddress: `flex items-center text-neutral-400 hover:text-white ease-in duration-150`,
   contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900/70`,
   skeleton: `w-full h-4 bg-neutral-800 animate-pulse`,
@@ -91,7 +92,7 @@ const Contracts = () => {
                       href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}#writeContract`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={style.contractAddress}
+                      className={style.contractWrite}
                     >
                       write
                       <ArrowUpRightIcon className="h-5 w-5" />

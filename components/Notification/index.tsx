@@ -5,8 +5,8 @@ import { ercWizardDocsHref } from 'constants/hrefs'
 
 const Notification = () => {
   return (
-    <div className="w-full py-4 px-8 flex items-center justify-center cool-gradient font-RobotoMono space-x-2 text-sm uppercase">
-      <div className="flex items-center justify-center space-x-4">
+    <div className="w-full py-4 px-8 cool-gradient font-RobotoMono text-sm uppercase">
+      <div className="flex items-center justify-between sm:justify-center space-x-2 sm:space-x-4">
         <span className="hidden sm:flex">Learn more about erc wizard:</span>
         <a href={ercWizardDocsHref} className="flex items-center justify-center underline">
           Documentation
