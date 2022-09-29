@@ -25,7 +25,7 @@ const Details = () => {
             <ArrowUpRightIcon className="h-5 w-5" />
           </a>
         </div>
-        <div className="w-full lg:flex-1 flex items-center justify-center space-y-8 relative polka-r-l">
+        <div className="w-full lg:flex-1 flex items-center justify-center space-y-8 border border-neutral-900">
           <Image src={deco} alt="" />
         </div>
       </div>
