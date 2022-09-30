@@ -38,7 +38,6 @@ const Contracts = () => {
       console.log('Success')
     },
   })
-  console.log(data)
 
   return (
     <section className={style.wrapper}>

@@ -2,10 +2,10 @@ import { twitterHref, discordHref, githubHref, ercWizardDocsHref } from 'constan
 
 const Footer = () => {
   return (
-    <footer className="text-sm mt-8 py-8 border-t border-neutral-900">
-      <div className="flex items-center justify-between flex-wrap gap-2">
+    <footer className="text-xs mt-8 py-8 border-t border-neutral-900">
+      <div className="flex items-center justify-center flex-col sm:flex-row sm:justify-between flex-wrap gap-2">
         <p className="font-Poppins">© 2022 ERC Wizard</p>
-        <div className="space-x-4 hover:text-neutral-400">
+        <div className="space-x-4 hover:text-neutral-400 uppercase">
           <a className=" hover:text-white" href={twitterHref}>
             twitter
           </a>

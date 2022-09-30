@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { deco } from 'assets'
-import { githubHref } from 'constants/hrefs'
+import { githubHref, discordHref } from 'constants/hrefs'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
 const Details = () => {
@@ -17,6 +17,14 @@ const Details = () => {
             supporting erc-721 and erc-1155 contract generation. developed following the erc standards, with secure
             open-source libraries like OpenZeppelin and Chainlink.
           </p>
+          <div className="uppercase text-justify">
+            <span className="">looking for a more personalised smart contract? </span>
+            <span>
+              <a className="underline" href={discordHref}>
+                get in touch
+              </a>
+            </span>
+          </div>
           <a
             className="bg-white text-black font-medium px-4 h-16 flex items-center justify-center uppercase border hover:text-white hover:bg-black hover:border transition duration-200 ease-in-out"
             href={githubHref}

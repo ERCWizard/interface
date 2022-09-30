@@ -23,12 +23,12 @@ const style = {
   optionsButton: `border bg-black text-white hover:bg-neutral-900 uppercase px-8 h-16 w-60 flex items-center justify-center`,
   optionsButtonActive: `border bg-white text-black uppercase px-8 h-16 w-60 flex items-center justify-center`,
   form: `w-full`,
-  inputWrapper: `relative z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
-  input: `block w-full h-full px-4 text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
-  label: `absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-4 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-4`,
+  inputWrapper: `relative flex items-center z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
+  input: `block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
+  label: `absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-[52px] origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-[52px]`,
   formButton: `bg-white text-black font-medium uppercase px-8 h-16 w-full flex items-center justify-center`,
   support: `w-fit uppercase text-xs flex items-center text-neutral-400 p-2 hover:text-white hover:bg-neutral-900 cursor-pointer transition duration-200 ease-in-out`,
-  inputDescription: `absolute top-1/2 right-4 transform -translate-y-1/2 cursor-help`,
+  inputDescription: `mx-4 cursor-help`,
   inputDescriptionIcon: `form-tooltip flex items-center justify-center text-xs border border-neutral-700 text-neutral-400 w-5 h-5`,
 }
 
@@ -140,6 +140,11 @@ const Form = () => {
       <form id={option} className={style.form} onSubmit={(event) => submitHandler(event)}>
         {contractFormInputs[option].map((input: any) => (
           <div key={option + input.name} className={style.inputWrapper}>
+            <div className={style.inputDescription}>
+              <span className={style.inputDescriptionIcon} data-tooltip={input.tooltip}>
+                i
+              </span>
+            </div>
             <input
               type={input.type}
               name={input.name}
@@ -158,11 +163,6 @@ const Form = () => {
             <label htmlFor={input.name} className={style.label}>
               {input.placeholder}
             </label>
-            <div className={style.inputDescription}>
-              <span className={style.inputDescriptionIcon} data-tooltip={input.tooltip}>
-                {'?'}
-              </span>
-            </div>
           </div>
         ))}
         <p className={style.description}>

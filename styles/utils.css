@@ -130,7 +130,7 @@
   display: none;
   position: absolute;
   z-index: 9999;
-  right: 2rem;
+  left: 2rem;
   bottom: 0;
   min-width: 14rem;
   padding: 1rem;

@@ -29,7 +29,7 @@ const Header = () => {
           <div className="hidden md:flex items-center">
             <div className="space-x-8 mr-8 uppercase hover:text-neutral-400 whitespace-nowrap">
               <button
-                data-value="support this project. copy address"
+                data-value="support this project: copy address"
                 onClick={() => copy(SUPPORT_ADDRESS)}
                 className="cursor-pointer copy-tooltip"
               >
