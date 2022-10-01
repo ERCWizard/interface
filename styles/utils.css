@@ -132,7 +132,8 @@
   z-index: 9999;
   left: 2rem;
   bottom: 0;
-  min-width: 14rem;
+  width: 14rem;
+  white-space: normal;
   padding: 1rem;
   font-size: 12px;
   text-align: center;

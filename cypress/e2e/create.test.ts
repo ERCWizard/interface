@@ -11,6 +11,10 @@ describe('Create Contract', () => {
       cy.viewport(1280, 720)
     })
 
+    it('Select Contrat Type', () => {
+      cy.get('tbody > :nth-child(1) > :nth-child(1)').click()
+    })
+
     it('Fetching Cost Failed', () => {
       cy.get('#erc721 > p').contains('deployment cost: fetching failed')
     })
@@ -54,7 +58,7 @@ describe('Create Contract', () => {
     })
 
     it('Select Contrat Type', () => {
-      cy.get('.space-x-4 > .bg-black').click()
+      cy.get('tbody > :nth-child(2) > :nth-child(1)').click()
     })
 
     it('Fetching Cost Failed', () => {
@@ -96,6 +100,10 @@ describe('Create Contract', () => {
       cy.viewport('iphone-6')
     })
 
+    it('Select contract type', () => {
+      cy.get('tbody > :nth-child(1) > :nth-child(1)').click()
+    })
+
     it('Fetching Cost Failed', () => {
       cy.get('#erc721 > p').contains('deployment cost: fetching failed')
     })
@@ -135,8 +143,8 @@ describe('Create Contract', () => {
       cy.viewport('iphone-6')
     })
 
-    it('Select Contrat Type', () => {
-      cy.get('.space-x-4 > .bg-black').click()
+    it('Select Contract Type', () => {
+      cy.get('tbody > :nth-child(2) > :nth-child(1)').click()
     })
 
     it('Fetching Cost Failed', () => {

@@ -13,7 +13,7 @@ const style = {
   description: `text-neutral-400 text-xs uppercase my-4`,
   table: `w-full text-left border-separate border-spacing-[1px]`,
   thead: `uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800`,
-  contract: `h-16 whitespace-nowrap bg-neutral-900/70 hover:bg-neutral-900 ease-in duration-150`,
+  contract: `h-16 whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150`,
   contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
   contractWrite: `flex items-center justify-center text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
   contractAddress: `flex items-center text-neutral-400 hover:text-white ease-in duration-150`,
@@ -41,8 +41,7 @@ const Contracts = () => {
 
   return (
     <section className={style.wrapper}>
-      <PageTitle title="explore deployed contracts" />
-      <p className={style.description}>Contracts</p>
+      <PageTitle title="explore deployed contracts" description="Contracts" />
       <div className="overflow-x-auto">
         <table className={style.table}>
           <thead className={style.thead}>
@@ -56,8 +55,8 @@ const Contracts = () => {
               <th scope="col" className="px-4 font-normal w-28 text-center">
                 abi
               </th>
-              <th scope="col" className="px-4 font-normal w-28 text-center">
-                interact
+              <th scope="col" className="px-4 font-normal w-20 text-center">
+                write
               </th>
             </tr>
           </thead>
@@ -93,7 +92,6 @@ const Contracts = () => {
                       rel="noopener noreferrer"
                       className={style.contractWrite}
                     >
-                      write
                       <ArrowUpRightIcon className="h-5 w-5" />
                     </a>
                   </td>
@@ -116,11 +114,11 @@ const Contracts = () => {
         </table>
       </div>
       {isMounted && !isLoading && data?.length === 0 && (
-        <div className="flex items-center justify-center uppercase text-neutral-400 bg-neutral-900/70 p-4 w-full">
+        <div className="flex items-center justify-center uppercase text-neutral-400 p-4 w-full">
           <span className="w-5 h-5 mr-4">
             <InformationCircleIcon className="w-5 h-5 mr-4" />
           </span>
-          <span>Couldn&apos;t find any contracts matching your address</span>
+          <span className="text-sm sm:text-base">Couldn&apos;t find any contracts matching your address</span>
         </div>
       )}
     </section>

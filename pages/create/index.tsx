@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import Seo from 'components/Seo'
-import Form from 'components/Form'
+import ContractsList from 'components/ContractsList'
 
 const Create: NextPage = () => {
   return (
     <div>
       <Seo title="Create" />
-      <Form />
+      <ContractsList />
     </div>
   )
 }

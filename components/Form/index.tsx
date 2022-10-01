@@ -2,8 +2,6 @@ import { ChangeEvent, FormEvent, useState, useContext } from 'react'
 import { useAccount, useNetwork, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi'
 import { ethers } from 'ethers'
 import { contractFormInputs, contractFormState } from 'constants/contractForm'
-import { contractOptions } from 'constants/contractOptions'
-import { Contract } from 'enums'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { factoryAddresses } from 'constants/addresses'
 import { contractFunctionName } from 'constants/contractFunctionName'
@@ -13,15 +11,11 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { TxModalContext } from 'context/TxModal'
 import { toast } from 'react-toastify'
-import { DiscordIcon, GitbookIcon } from 'assets'
-import { discordHref, ercWizardDocsHref } from 'constants/hrefs'
+import { InformationCircleIcon } from '@heroicons/react/20/solid'
 
 const style = {
   wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
   description: `text-neutral-400 text-xs uppercase my-4`,
-  options: `flex w-full space-x-4 pb-8 border-b border-neutral-900`,
-  optionsButton: `border bg-black text-white hover:bg-neutral-900 uppercase px-8 h-16 w-60 flex items-center justify-center`,
-  optionsButtonActive: `border bg-white text-black uppercase px-8 h-16 w-60 flex items-center justify-center`,
   form: `w-full`,
   inputWrapper: `relative flex items-center z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
   input: `block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
@@ -29,18 +23,17 @@ const style = {
   formButton: `bg-white text-black font-medium uppercase px-8 h-16 w-full flex items-center justify-center`,
   support: `w-fit uppercase text-xs flex items-center text-neutral-400 p-2 hover:text-white hover:bg-neutral-900 cursor-pointer transition duration-200 ease-in-out`,
   inputDescription: `mx-4 cursor-help`,
-  inputDescriptionIcon: `form-tooltip flex items-center justify-center text-xs border border-neutral-700 text-neutral-400 w-5 h-5`,
+  inputDescriptionIcon: `form-tooltip flex items-center justify-center text-neutral-400`,
 }
 
-const Form = () => {
+const Form = ({ type }: { type: string }) => {
   const router = useRouter()
   const isMounted = useIsMounted()
   const { chain } = useNetwork()
   const { isConnected } = useAccount()
   const context = useContext(TxModalContext)
 
-  const [option, setOption] = useState(Contract.ERC721)
-  const [formState, setFormState]: any = useState(contractFormState)
+  const [formState, setFormState]: any = useState(contractFormState[type])
 
   const { data: cost, isLoading: isLoadingCost } = useContractRead({
     addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
@@ -51,7 +44,7 @@ const Form = () => {
     mode: 'recklesslyUnprepared',
     addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
     contractInterface: WizardFactoryAbi,
-    functionName: contractFunctionName[option],
+    functionName: contractFunctionName[type],
     overrides: {
       value: cost,
     },
@@ -93,56 +86,27 @@ const Form = () => {
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (isConnected) {
-      console.log('submited ' + option)
+      console.log('submited ' + type)
       write?.({
-        recklesslySetUnpreparedArgs: Object.values(formState[option]),
+        recklesslySetUnpreparedArgs: Object.values(formState),
       })
     }
   }
   const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setFormState((prevState: any) => ({
       ...prevState,
-      [option]: {
-        ...prevState[option],
-        [event.target.name]: event.target.value.replace(',', '.'),
-      },
+      [event.target.name]: event.target.value,
     }))
   }
   return (
     <section className={style.wrapper}>
-      <PageTitle title="create smart contract" />
-      <div className="flex items-center justify-between">
-        <p className={style.description}>select the contract type</p>
-        <div className="flex">
-          <a href={ercWizardDocsHref} className={style.support}>
-            <span>details</span>
-            <GitbookIcon className="w-4 h-4 ml-2" />
-          </a>
-          <a href={discordHref} className={style.support}>
-            <span>support</span>
-            <DiscordIcon className="w-4 h-4 ml-2" />
-          </a>
-        </div>
-      </div>
-      <div className={style.options}>
-        {contractOptions.map((contractOption) => (
-          <button
-            className={contractOption == option ? style.optionsButtonActive : style.optionsButton}
-            key={contractOption}
-            disabled={isLoading || waitForTransactionIsLoading}
-            onClick={() => setOption(contractOption)}
-          >
-            {contractOption}
-          </button>
-        ))}
-      </div>
-      <p className={style.description}>fill in all the contract information</p>
-      <form id={option} className={style.form} onSubmit={(event) => submitHandler(event)}>
-        {contractFormInputs[option].map((input: any) => (
-          <div key={option + input.name} className={style.inputWrapper}>
+      <PageTitle title={`${type}`} description="constructor" uppercase goBack />
+      <form id={type} className={style.form} onSubmit={(event) => submitHandler(event)}>
+        {contractFormInputs[type].map((input: any) => (
+          <div key={type + input.name} className={style.inputWrapper}>
             <div className={style.inputDescription}>
               <span className={style.inputDescriptionIcon} data-tooltip={input.tooltip}>
-                i
+                <InformationCircleIcon className="w-5 h-5 text-neutral-700" />
               </span>
             </div>
             <input
@@ -158,7 +122,7 @@ const Form = () => {
               autoComplete="off"
               required
               onChange={(e) => formHandler(e)}
-              value={formState[option][input.name]}
+              value={formState[input.name]}
             />
             <label htmlFor={input.name} className={style.label}>
               {input.placeholder}
@@ -181,7 +145,7 @@ const Form = () => {
         </p>
         <button
           type="submit"
-          form={option}
+          form={type}
           disabled={isMounted && (!isConnected || isLoading || waitForTransactionIsLoading)}
           className={style.formButton}
         >
