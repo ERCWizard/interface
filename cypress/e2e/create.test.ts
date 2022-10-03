@@ -2,7 +2,7 @@ import { ERC721Inputs, ERC1155Inputs } from '../utils/inputs'
 import { connectWalletDesktop, connectWalletMobile } from '../utils/connectWallet'
 
 describe('Create Contract', () => {
-  context('Desktop ERC721', () => {
+  context('Desktop ERC721A', () => {
     before(() => {
       cy.visit('/create')
     })
@@ -16,23 +16,20 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc721 > p').contains('deployment cost: fetching failed')
+      cy.get('#erc721a > p').contains('deployment cost: fetching failed')
     })
 
     it('Disabled Submit Button', () => {
-      cy.get('#erc721 > button').contains('connect wallet')
-    })
-
-    it('Connect Wallet', () => {
-      connectWalletDesktop()
+      cy.get('#erc721a > button').contains('connect wallet')
     })
 
     it('Active Submit Button', () => {
-      cy.get('#erc721 > button').contains('deploy')
+      connectWalletDesktop()
+      cy.get('#erc721a > button').contains('deploy')
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc721 > p').should('not.include.text', 'fetching failed')
+      cy.get('#erc721a > p').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
@@ -44,7 +41,7 @@ describe('Create Contract', () => {
 
     it('Active Submit Button', () => {
       connectWalletDesktop()
-      cy.get('#erc721 > button').contains('deploy').should('not.be.disabled')
+      cy.get('#erc721a > button').contains('deploy').should('not.be.disabled')
     })
   })
 
@@ -91,7 +88,7 @@ describe('Create Contract', () => {
     })
   })
 
-  context('Mobile ERC721', () => {
+  context('Mobile ERC721A', () => {
     before(() => {
       cy.visit('/create')
     })
@@ -100,25 +97,25 @@ describe('Create Contract', () => {
       cy.viewport('iphone-6')
     })
 
-    it('Select contract type', () => {
+    it('Select Contract Type', () => {
       cy.get('tbody > :nth-child(1) > :nth-child(1)').click()
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc721 > p').contains('deployment cost: fetching failed')
+      cy.get('#erc721a > p').contains('deployment cost: fetching failed')
     })
 
     it('Disabled Submit Button', () => {
-      cy.get('#erc721 > button').contains('connect wallet')
+      cy.get('#erc721a > button').contains('connect wallet')
     })
 
     it('Active Submit Button', () => {
       connectWalletMobile()
-      cy.get('#erc721 > button').contains('deploy')
+      cy.get('#erc721a > button').contains('deploy')
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc721 > p').should('not.include.text', 'fetching failed')
+      cy.get('#erc721a > p').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
@@ -130,7 +127,7 @@ describe('Create Contract', () => {
 
     it('Active Submit Button', () => {
       connectWalletMobile()
-      cy.get('#erc721 > button').contains('deploy').should('not.be.disabled')
+      cy.get('#erc721a > button').contains('deploy').should('not.be.disabled')
     })
   })
 

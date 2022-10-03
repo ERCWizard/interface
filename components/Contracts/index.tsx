@@ -1,8 +1,8 @@
 import { useAccount, useNetwork, useContractRead } from 'wagmi'
 import { useIsMounted } from 'hooks/useIsMounted'
-import { factoryAddresses } from 'constants/addresses'
+import { storageAddresses } from 'constants/addresses'
 import { formatContractType } from 'utils/formatContractType'
-import { WizardFactoryAbi } from 'abi'
+import { WizardStorageAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
 import { ArrowUpRightIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
@@ -27,8 +27,8 @@ const Contracts = () => {
   const { chain } = useNetwork()
   const { address } = useAccount()
   const { data, isLoading } = useContractRead({
-    addressOrName: chain?.id && factoryAddresses[chain.id] ? factoryAddresses[chain.id] : '',
-    contractInterface: WizardFactoryAbi,
+    addressOrName: chain?.id && storageAddresses[chain.id] ? storageAddresses[chain.id] : '',
+    contractInterface: WizardStorageAbi,
     functionName: 'getCreatedContracts',
     args: address,
     onError(error) {
@@ -90,6 +90,7 @@ const Contracts = () => {
                       href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}#writeContract`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="block explorer"
                       className={style.contractWrite}
                     >
                       <ArrowUpRightIcon className="h-5 w-5" />

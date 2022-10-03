@@ -35,7 +35,7 @@ const ContractsList = () => {
                 <td className="h-16">
                   <Link href={`/create/${contractOption}`}>
                     <a className="flex items-center justify-between w-full h-full px-4 cursor-pointer uppercase space-x-4">
-                      <div className="flex items-center">
+                      <div className="flex items-center w-36">
                         <span
                           className="form-tooltip cursor-help text-neutral-400"
                           data-tooltip={contractMetadata[contractOption].description}
@@ -60,6 +60,7 @@ const ContractsList = () => {
                 <td className="h-16">
                   <a
                     href={ercWizardDocsHref + 'contracts/' + contractOption}
+                    aria-label="documentation"
                     className="flex items-center justify-center uppercase whitespace-nowrap px-4 h-full text-neutral-400 hover:text-white"
                   >
                     <ArrowUpRightIcon className="h-5 w-5" />

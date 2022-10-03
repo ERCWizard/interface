@@ -5,6 +5,6 @@ type contractFunctionNameType = {
 }
 
 export const contractFunctionName: contractFunctionNameType = {
-  [Contract.ERC721]: 'createERC721Contract',
+  [Contract.ERC721A]: 'createERC721AContract',
   [Contract.ERC1155]: 'createERC1155Contract',
 }

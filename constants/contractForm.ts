@@ -17,7 +17,7 @@ export type Inputs = {
 }
 
 export const contractFormInputs: ContractFormInputs = {
-  [Contract.ERC721]: [
+  [Contract.ERC721A]: [
     {
       type: 'text',
       name: 'name',
@@ -112,12 +112,12 @@ export const contractFormInputs: ContractFormInputs = {
       name: 'feePercent',
       placeholder: 'royalty fee percent',
       min: '0',
-      max: '100',
+      max: '10000',
       minlength: '1',
       maxlength: '',
       autoComplete: 'off',
       tooltip:
-        'This sets the royalty fee percent (e.g. 5 = 5%). The average range varies between 0-9%. Going above 25% is not recommended',
+        'This sets the royalty fee percent (denominator is 10,000. So 500 represents 5%). The average range varies between 0-9%. Going above 25% is not recommended',
     },
   ],
   [Contract.ERC1155]: [
@@ -192,12 +192,12 @@ export const contractFormInputs: ContractFormInputs = {
       name: 'feePercent',
       placeholder: 'royalty fee percent',
       min: '0',
-      max: '100',
+      max: '10000',
       minlength: '1',
       maxlength: '',
       autoComplete: 'off',
       tooltip:
-        'This sets the royalty fee percent (e.g. 5 = 5%). The average range varies between 0-9%. Going above 25% is not recommended',
+        'This sets the royalty fee percent (denominator is 10,000. So 500 represents 5%). The average range varies between 0-9%. Going above 25% is not recommended',
     },
   ],
 }
@@ -207,7 +207,7 @@ type ContractFormState = {
 }
 
 export const contractFormState: ContractFormState = {
-  [Contract.ERC721]: {
+  [Contract.ERC721A]: {
     name: '',
     symbol: '',
     cost: '',

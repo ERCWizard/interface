@@ -17,17 +17,22 @@
   },
   {
     "inputs": [],
-    "name": "WizardFactory__InsufficientFunds",
+    "name": "InsufficientFunds",
     "type": "error"
   },
   {
     "inputs": [],
-    "name": "WizardFactory__InvalidERC1155Implementation",
+    "name": "InvalidERC1155Implementation",
     "type": "error"
   },
   {
     "inputs": [],
-    "name": "WizardFactory__InvalidERC721Implementation",
+    "name": "InvalidERC721AImplementation",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidStorageImplementation",
     "type": "error"
   },
   {
@@ -120,7 +125,7 @@
   },
   {
     "inputs": [],
-    "name": "ERC721Implementation",
+    "name": "ERC721AImplementation",
     "outputs": [
       {
         "internalType": "address",
@@ -132,14 +137,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "allCreatedContracts",
+    "inputs": [],
+    "name": "WizardStorageImplementation",
     "outputs": [
       {
         "internalType": "address",
@@ -254,38 +253,9 @@
         "type": "uint96"
       }
     ],
-    "name": "createERC721Contract",
+    "name": "createERC721AContract",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "createdContracts",
-    "outputs": [
-      {
-        "internalType": "enum WizardFactory.ERCType",
-        "name": "_type",
-        "type": "uint8"
-      },
-      {
-        "internalType": "address",
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -302,37 +272,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getCreatedContracts",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "enum WizardFactory.ERCType",
-            "name": "_type",
-            "type": "uint8"
-          },
-          {
-            "internalType": "address",
-            "name": "_address",
-            "type": "address"
-          }
-        ],
-        "internalType": "struct WizardFactory.CreatedContract[]",
-        "name": "",
-        "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "getLatestPrice",
     "outputs": [
@@ -340,19 +279,6 @@
         "internalType": "int256",
         "name": "",
         "type": "int256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getTotalCreatedContracts",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -425,7 +351,7 @@
         "type": "address"
       }
     ],
-    "name": "setERC721Implementation",
+    "name": "setERC721AImplementation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -439,6 +365,19 @@
       }
     ],
     "name": "setPriceFeed",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_wizardStorageImplementation",
+        "type": "address"
+      }
+    ],
+    "name": "setWizardStorageImplementation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

@@ -1,6 +1,11 @@
 [
   {
     "inputs": [],
+    "name": "AddressAlreadyClaimed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "ApprovalCallerNotOwnerNorApproved",
     "type": "error"
   },
@@ -26,42 +31,27 @@
   },
   {
     "inputs": [],
-    "name": "ERC721__AddressAlreadyClaimed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__InsufficientFunds",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__InvalidMintAmount",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__InvalidProof",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__MaxSupplyExceeded",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__TheContractIsPaused",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721__TheWhitelistSaleIsNotEnabled",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "ERC721__URIQueryForNonexistentToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientFunds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidMintAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidProof",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MaxSupplyExceeded",
     "type": "error"
   },
   {
@@ -77,6 +67,16 @@
   {
     "inputs": [],
     "name": "OwnerQueryForNonexistentToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TheContractIsPaused",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TheWhitelistSaleIsNotEnabled",
     "type": "error"
   },
   {
@@ -173,13 +173,13 @@
       {
         "indexed": true,
         "internalType": "string",
-        "name": "_tokenName",
+        "name": "_name",
         "type": "string"
       },
       {
         "indexed": true,
         "internalType": "string",
-        "name": "_tokenSymbol",
+        "name": "_symbol",
         "type": "string"
       },
       {
@@ -227,7 +227,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_contractOwner",
+        "name": "_owner",
         "type": "address"
       }
     ],
@@ -251,50 +251,6 @@
       }
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "royaltyReceiver",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint96",
-        "name": "feePercent",
-        "type": "uint96"
-      }
-    ],
-    "name": "RoyaltyInfoChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "royaltyReceiver",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint96",
-        "name": "feePercent",
-        "type": "uint96"
-      }
-    ],
-    "name": "TokenRoyaltyInfoChanged",
     "type": "event"
   },
   {
@@ -408,12 +364,12 @@
     "inputs": [
       {
         "internalType": "string",
-        "name": "_tokenName",
+        "name": "_name",
         "type": "string"
       },
       {
         "internalType": "string",
-        "name": "_tokenSymbol",
+        "name": "_symbol",
         "type": "string"
       },
       {
@@ -453,7 +409,7 @@
       },
       {
         "internalType": "address",
-        "name": "_contractOwner",
+        "name": "_owner",
         "type": "address"
       }
     ],
