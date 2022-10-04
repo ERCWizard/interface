@@ -14,9 +14,9 @@ import { toast } from 'react-toastify'
 import { InformationCircleIcon } from '@heroicons/react/20/solid'
 
 const style = {
-  wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
+  wrapper: `min-h-[calc(100vh-261px)] max-w-[1280px] mx-auto flex flex-col`,
   description: `text-neutral-400 text-xs uppercase my-4`,
-  form: `w-full`,
+  form: `w-full mb-8`,
   inputWrapper: `relative flex items-center z-0 mb-[1px] w-full h-16 group bg-neutral-900 hover:bg-neutral-800`,
   input: `block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer`,
   label: `absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-[52px] origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-[52px]`,
@@ -120,7 +120,7 @@ const Form = ({ type }: { type: string }) => {
               minLength={input.minlength}
               maxLength={input.maxlength}
               autoComplete="off"
-              required
+              required={input.required}
               onChange={(e) => formHandler(e)}
               value={formState[input.name]}
             />

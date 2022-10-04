@@ -4,7 +4,7 @@ import { EffectCreative, Autoplay } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/bundle'
 import 'swiper/css/effect-creative'
-import { wizardFactory, wizardStorage, wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
+import { wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 import { formatCode } from 'utils/formatCode'
 import { ArrowRightIcon, ArrowUpRightIcon } from '@heroicons/react/20/solid'
 
@@ -62,8 +62,6 @@ export default function Section() {
           loop={true}
           modules={[EffectCreative, Autoplay]}
         >
-          <SwiperSlide className="bg-black text-white">{formatCode(wizardFactory)}</SwiperSlide>
-          <SwiperSlide className="bg-black text-white">{formatCode(wizardStorage)}</SwiperSlide>
           <SwiperSlide className="bg-black text-white">{formatCode(wizardERC721)}</SwiperSlide>
           <SwiperSlide className="bg-black text-white">{formatCode(wizardERC1155)}</SwiperSlide>
         </Swiper>

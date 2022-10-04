@@ -5,7 +5,7 @@ import PageTitle from 'components/PageTitle'
 import { ArrowUpRightIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
 
 const style = {
-  wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
+  wrapper: `min-h-[calc(100vh-261px)] max-w-[1280px] mx-auto flex flex-col`,
   description: `text-neutral-400 text-xs uppercase my-4`,
   support: `w-fit uppercase text-xs flex items-center text-neutral-400 p-2 hover:text-white hover:bg-neutral-900 cursor-pointer transition duration-200 ease-in-out`,
   table: `w-full text-left border-separate border-spacing-[1px]`,

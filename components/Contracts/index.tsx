@@ -1,7 +1,7 @@
 import { useAccount, useNetwork, useContractRead } from 'wagmi'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { storageAddresses } from 'constants/addresses'
-import { formatContractType } from 'utils/formatContractType'
+import { contractType } from 'utils/formatContractType'
 import { WizardStorageAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
@@ -9,7 +9,7 @@ import { ArrowUpRightIcon, InformationCircleIcon } from '@heroicons/react/20/sol
 import PageTitle from 'components/PageTitle'
 
 const style = {
-  wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
+  wrapper: `min-h-[calc(100vh-261px)] max-w-[1280px] mx-auto flex flex-col`,
   description: `text-neutral-400 text-xs uppercase my-4`,
   table: `w-full text-left border-separate border-spacing-[1px]`,
   thead: `uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800`,
@@ -64,7 +64,7 @@ const Contracts = () => {
             {isMounted && !isLoading ? (
               data?.map((contract) => (
                 <tr key={contract._address} className={style.contract}>
-                  <td className="px-4 uppercase">{formatContractType(contract._type)}</td>
+                  <td className="px-4 uppercase">{contractType[contract._type]}</td>
                   <td className="px-4 w-full">
                     <a
                       href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}`}
@@ -79,7 +79,7 @@ const Contracts = () => {
                   <td className="px-4 uppercase text-center">
                     <button
                       data-value="copy abi to clipboard"
-                      onClick={() => copy(contractAbi[formatContractType(contract._type)])}
+                      onClick={() => copy(contractAbi[contractType[contract._type]])}
                       className={`${style.contractCopy} copy-tooltip`}
                     >
                       copy
