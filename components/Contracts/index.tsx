@@ -5,7 +5,7 @@ import { contractType } from 'utils/formatContractType'
 import { WizardStorageAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
-import { ArrowUpRightIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 import PageTitle from 'components/PageTitle'
 
 const style = {
@@ -61,7 +61,20 @@ const Contracts = () => {
             </tr>
           </thead>
           <tbody>
-            {isMounted && !isLoading ? (
+            {isMounted && isLoading ? (
+              <>
+                {Array.from({ length: 6 }, (_, i) => (
+                  <tr className={style.contractSkeleton} key={i + 'tr'}>
+                    {Array.from({ length: 4 }, (_, i) => (
+                      <td className="px-4" key={i}>
+                        <div className={style.skeleton} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </>
+            ) : (
+              isMounted &&
               data?.map((contract) => (
                 <tr key={contract._address} className={style.contract}>
                   <td className="px-4 uppercase">{contractType[contract._type]}</td>
@@ -98,30 +111,17 @@ const Contracts = () => {
                   </td>
                 </tr>
               ))
-            ) : (
-              <>
-                {Array.from({ length: 6 }, (_, i) => (
-                  <tr className={style.contractSkeleton} key={i + 'tr'}>
-                    {Array.from({ length: 4 }, (_, i) => (
-                      <td className="px-4" key={i}>
-                        <div className={style.skeleton} />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </>
             )}
           </tbody>
         </table>
       </div>
-      {isMounted && !isLoading && data?.length === 0 && (
-        <div className="flex items-center justify-center uppercase text-neutral-400 p-4 w-full">
-          <span className="w-5 h-5 mr-4">
-            <InformationCircleIcon className="w-5 h-5 mr-4" />
-          </span>
-          <span className="text-sm sm:text-base">Couldn&apos;t find any contracts matching your address</span>
-        </div>
-      )}
+      <div className="flex items-center justify-center uppercase text-neutral-400 mt-4 w-full">
+        <span className="text-xs sm:text-base">
+          {isMounted && !isLoading && data?.length === 0
+            ? "Couldn't find any contracts matching your address"
+            : isMounted && !isLoading && data === undefined && 'connect wallet'}
+        </span>
+      </div>
     </section>
   )
 }

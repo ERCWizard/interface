@@ -101,7 +101,7 @@ const Form = ({ type }: { type: string }) => {
   return (
     <section className={style.wrapper}>
       <PageTitle title={`${type}`} description="constructor" uppercase goBack />
-      <form id={type} className={style.form} onSubmit={(event) => submitHandler(event)}>
+      <form id={type} className={style.form} onSubmit={submitHandler}>
         {contractFormInputs[type].map((input: any) => (
           <div key={type + input.name} className={style.inputWrapper}>
             <div className={style.inputDescription}>
@@ -129,20 +129,14 @@ const Form = ({ type }: { type: string }) => {
             </label>
           </div>
         ))}
-        <p className={style.description}>
-          deployment cost:{' '}
-          {isMounted && cost ? (
-            isLoadingCost ? (
-              <span>fetching...</span>
-            ) : (
-              <span>
-                {ethers.utils.formatEther(cost).slice(0, 6)} {chain?.nativeCurrency?.symbol}
-              </span>
-            )
-          ) : (
-            <span>fetching failed</span>
-          )}
-        </p>
+        <div className={style.description} data-cy="cost">
+          cost:{' '}
+          {isMounted && cost
+            ? isLoadingCost
+              ? 'fetching...'
+              : `${ethers.utils.formatEther(cost).slice(0, 6)} ${chain?.nativeCurrency?.symbol}`
+            : 'fetching failed'}
+        </div>
         <button
           type="submit"
           form={type}

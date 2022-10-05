@@ -16,7 +16,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc721a > p').contains('deployment cost: fetching failed')
+      cy.get('[data-cy="cost"]').should('include.text', 'fetching failed')
     })
 
     it('Disabled Submit Button', () => {
@@ -29,7 +29,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc721a > p').should('not.include.text', 'fetching failed')
+      cy.get('[data-cy="cost"]').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
@@ -59,7 +59,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc1155 > p').contains('deployment cost: fetching failed')
+      cy.get('[data-cy="cost"]').should('include.text', 'fetching failed')
     })
 
     it('Disabled Submit Button', () => {
@@ -72,7 +72,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc1155 > p').should('not.include.text', 'fetching failed')
+      cy.get('[data-cy="cost"]').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
@@ -102,7 +102,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc721a > p').contains('deployment cost: fetching failed')
+      cy.get('[data-cy="cost"]').should('include.text', 'fetching failed')
     })
 
     it('Disabled Submit Button', () => {
@@ -115,7 +115,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc721a > p').should('not.include.text', 'fetching failed')
+      cy.get('[data-cy="cost"]').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
@@ -145,7 +145,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Failed', () => {
-      cy.get('#erc1155 > p').contains('deployment cost: fetching failed')
+      cy.get('[data-cy="cost"]').should('include.text', 'fetching failed')
     })
 
     it('Disabled Submit Button', () => {
@@ -158,7 +158,7 @@ describe('Create Contract', () => {
     })
 
     it('Fetching Cost Success', () => {
-      cy.get('#erc1155 > p').should('not.include.text', 'fetching failed')
+      cy.get('[data-cy="cost"]').should('not.include.text', 'fetching failed')
     })
 
     it('Fill Form', () => {
