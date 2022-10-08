@@ -16,3 +16,13 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+input[type='range']::-webkit-slider-thumb {
+  width: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1rem;
+  cursor: ew-resize;
+  background: #fff;
+  border-radius: 0;
+}

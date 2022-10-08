@@ -108,7 +108,13 @@ const Form = ({ standard, tier }: { standard: string; tier: string }) => {
               type={input.type}
               name={input.name}
               id={input.name}
-              className="block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer"
+              className={
+                input.type === 'range'
+                  ? `block w-full h-2 appearance-none mr-4 transform duration-300 ${
+                      formState[input.name] > 2500 ? 'bg-red-500' : 'bg-neutral-700'
+                    }`
+                  : 'block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer'
+              }
               placeholder=" "
               min={input.min}
               max={input.max}
@@ -123,7 +129,7 @@ const Form = ({ standard, tier }: { standard: string; tier: string }) => {
               htmlFor={input.name}
               className="absolute text-neutral-400 uppercase duration-300 -z-10 transform -translate-y-5 scale-75 top-5 left-[52px] origin-[0] peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:left-[52px]"
             >
-              {input.placeholder}
+              {input.placeholder} {input.type === 'range' && formState[input.name] / 100 + '%'}
             </label>
           </div>
         ))}
