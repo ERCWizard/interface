@@ -55,7 +55,7 @@ describe('Create Contract', () => {
     })
 
     it('Select Contrat Type', () => {
-      cy.get('tbody > :nth-child(2) > :nth-child(1)').click()
+      cy.get('tbody > :nth-child(3) > :nth-child(1)').click()
     })
 
     it('Fetching Cost Failed', () => {
@@ -141,7 +141,7 @@ describe('Create Contract', () => {
     })
 
     it('Select Contract Type', () => {
-      cy.get('tbody > :nth-child(2) > :nth-child(1)').click()
+      cy.get('tbody > :nth-child(3) > :nth-child(1)').click()
     })
 
     it('Fetching Cost Failed', () => {

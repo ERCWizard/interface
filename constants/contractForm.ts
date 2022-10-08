@@ -1,4 +1,4 @@
-import { Contract } from 'enums'
+import { Standard } from 'enums'
 
 type ContractFormInputs = {
   [type: string]: Inputs[]
@@ -31,7 +31,7 @@ const tooltip_tokenAmount = `This sets the amount of the token (e.g. 100)`
 const tooltip_tokenMetadataUri = `This sets the base metadata uri for the token (e.g. ipfs://token-metadata-cid-hash or https://token-metadata)`
 
 export const contractFormInputs: ContractFormInputs = {
-  [Contract.ERC721A]: [
+  [Standard.ERC721A]: [
     {
       type: 'text',
       name: 'name',
@@ -141,7 +141,7 @@ export const contractFormInputs: ContractFormInputs = {
       tooltip: tooltip_feePercent,
     },
   ],
-  [Contract.ERC1155]: [
+  [Standard.ERC1155]: [
     {
       type: 'text',
       name: 'name',
@@ -234,7 +234,7 @@ type ContractFormState = {
 }
 
 export const contractFormState: ContractFormState = {
-  [Contract.ERC721A]: {
+  [Standard.ERC721A]: {
     name: '',
     symbol: '',
     cost: '',
@@ -245,7 +245,7 @@ export const contractFormState: ContractFormState = {
     royaltyReceiver: '',
     feePercent: '',
   },
-  [Contract.ERC1155]: {
+  [Standard.ERC1155]: {
     name: '',
     symbol: '',
     id: '',

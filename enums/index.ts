@@ -1,1 +1,2 @@
-export { Contract } from './Contract'
+export { Standard } from './Standard'
+export { Tier } from './Tier'

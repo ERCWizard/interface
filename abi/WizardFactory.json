@@ -3,12 +3,22 @@
     "inputs": [
       {
         "internalType": "int256",
-        "name": "_cost",
+        "name": "_basicTierCost",
+        "type": "int256"
+      },
+      {
+        "internalType": "int256",
+        "name": "_premiumTierCost",
+        "type": "int256"
+      },
+      {
+        "internalType": "int256",
+        "name": "_advancedTierCost",
         "type": "int256"
       },
       {
         "internalType": "address",
-        "name": "priceFeedAddress",
+        "name": "_priceFeed",
         "type": "address"
       }
     ],
@@ -21,13 +31,19 @@
     "type": "error"
   },
   {
-    "inputs": [],
-    "name": "InvalidERC1155Implementation",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "InvalidERC721AImplementation",
+    "inputs": [
+      {
+        "internalType": "enum Enums.Standard",
+        "name": "_standard",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
+      }
+    ],
+    "name": "InvalidContractImplementation",
     "type": "error"
   },
   {
@@ -41,7 +57,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "createdContract",
+        "name": "contractAddress",
         "type": "address"
       },
       {
@@ -58,20 +74,20 @@
       },
       {
         "indexed": false,
-        "internalType": "enum WizardFactory.ERCType",
-        "name": "contractType",
+        "internalType": "enum Enums.Standard",
+        "name": "standard",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum Enums.Tier",
+        "name": "tier",
         "type": "uint8"
       },
       {
         "indexed": true,
         "internalType": "address",
-        "name": "royaltyReceiver",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "contractOwner",
+        "name": "owner",
         "type": "address"
       }
     ],
@@ -98,21 +114,19 @@
     "type": "event"
   },
   {
-    "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "ercImplementation",
-        "type": "address"
+        "internalType": "enum Enums.Standard",
+        "name": "",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "",
+        "type": "uint8"
       }
     ],
-    "name": "SetERCImplementation",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "ERC1155Implementation",
+    "name": "contractImplementation",
     "outputs": [
       {
         "internalType": "address",
@@ -124,33 +138,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "ERC721AImplementation",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "address",
+        "internalType": "enum Enums.Tier",
         "name": "",
-        "type": "address"
+        "type": "uint8"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "WizardStorageImplementation",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "cost",
     "outputs": [
       {
@@ -198,6 +192,11 @@
         "internalType": "uint96",
         "name": "_feePercent",
         "type": "uint96"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
       }
     ],
     "name": "createERC1155Contract",
@@ -251,6 +250,11 @@
         "internalType": "uint96",
         "name": "_feePercent",
         "type": "uint96"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
       }
     ],
     "name": "createERC721AContract",
@@ -259,7 +263,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
+      }
+    ],
     "name": "getCost",
     "outputs": [
       {
@@ -320,38 +330,40 @@
   {
     "inputs": [
       {
+        "internalType": "enum Enums.Standard",
+        "name": "_standard",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "_contractImplementation",
+        "type": "address"
+      }
+    ],
+    "name": "setContractImplementation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
+      },
+      {
         "internalType": "int256",
         "name": "_cost",
         "type": "int256"
       }
     ],
     "name": "setCost",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_ercImplementation",
-        "type": "address"
-      }
-    ],
-    "name": "setERC1155Implementation",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_ercImplementation",
-        "type": "address"
-      }
-    ],
-    "name": "setERC721AImplementation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -373,13 +385,26 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_wizardStorageImplementation",
+        "name": "_storageImplementation",
         "type": "address"
       }
     ],
-    "name": "setWizardStorageImplementation",
+    "name": "setStorageImplementation",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "storageImplementation",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

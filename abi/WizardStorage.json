@@ -38,29 +38,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_deployer",
-        "type": "address"
-      },
-      {
-        "internalType": "uint8",
-        "name": "_ERCType",
-        "type": "uint8"
-      },
-      {
-        "internalType": "address",
-        "name": "_addr",
-        "type": "address"
-      }
-    ],
-    "name": "addCreatedContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "",
         "type": "address"
       },
@@ -73,13 +50,18 @@
     "name": "createdContracts",
     "outputs": [
       {
-        "internalType": "uint8",
-        "name": "_type",
+        "internalType": "enum Enums.Standard",
+        "name": "standard",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "tier",
         "type": "uint8"
       },
       {
         "internalType": "address",
-        "name": "_address",
+        "name": "address_",
         "type": "address"
       }
     ],
@@ -112,13 +94,18 @@
       {
         "components": [
           {
-            "internalType": "uint8",
-            "name": "_type",
+            "internalType": "enum Enums.Standard",
+            "name": "standard",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum Enums.Tier",
+            "name": "tier",
             "type": "uint8"
           },
           {
             "internalType": "address",
-            "name": "_address",
+            "name": "address_",
             "type": "address"
           }
         ],
@@ -159,6 +146,34 @@
       }
     ],
     "name": "setFactoryAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_deployer",
+        "type": "address"
+      },
+      {
+        "internalType": "enum Enums.Standard",
+        "name": "_standard",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Enums.Tier",
+        "name": "_tier",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "storeCreatedContract",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

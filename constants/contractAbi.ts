@@ -1,11 +1,18 @@
-import { Contract } from 'enums'
-import { ERC721AAbi, ERC1155Abi } from 'abi'
+import { Standard, Tier } from 'enums'
+import { ERC721A_Basic_Abi, ERC721A_Premium_Abi, ERC1155_Basic_Abi } from 'abi'
 
 type ContractAbi = {
-  [type: string]: any
+  [standard: string]: {
+    [tier: Tier | number]: any
+  }
 }
 
 export const contractAbi: ContractAbi = {
-  [Contract.ERC721A]: ERC721AAbi,
-  [Contract.ERC1155]: ERC1155Abi,
+  [Standard.ERC721A]: {
+    [Tier.basic]: ERC721A_Basic_Abi,
+    [Tier.premium]: ERC721A_Premium_Abi,
+  },
+  [Standard.ERC1155]: {
+    [Tier.basic]: ERC1155_Basic_Abi,
+  },
 }

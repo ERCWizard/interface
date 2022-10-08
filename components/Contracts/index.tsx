@@ -1,25 +1,13 @@
 import { useAccount, useNetwork, useContractRead } from 'wagmi'
 import { useIsMounted } from 'hooks/useIsMounted'
 import { storageAddresses } from 'constants/addresses'
-import { contractType } from 'utils/formatContractType'
+import { standardValues } from 'enums/Standard'
 import { WizardStorageAbi } from 'abi'
 import { contractAbi } from 'constants/contractAbi'
 import { useCopyClipboard } from 'hooks/useCopyClipboard'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
 import PageTitle from 'components/PageTitle'
-
-const style = {
-  wrapper: `min-h-[calc(100vh-261px)] max-w-[1280px] mx-auto flex flex-col`,
-  description: `text-neutral-400 text-xs uppercase my-4`,
-  table: `w-full text-left border-separate border-spacing-[1px]`,
-  thead: `uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800`,
-  contract: `h-16 whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150`,
-  contractCopy: `text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
-  contractWrite: `flex items-center justify-center text-neutral-400 hover:text-white ease-in duration-150 uppercase`,
-  contractAddress: `flex items-center text-neutral-400 hover:text-white ease-in duration-150`,
-  contractSkeleton: `h-16 whitespace-nowrap bg-neutral-900/70`,
-  skeleton: `w-full h-4 bg-neutral-800 animate-pulse`,
-}
+import { tierValues } from 'enums/Tier'
 
 const Contracts = () => {
   const { copy } = useCopyClipboard()
@@ -40,17 +28,20 @@ const Contracts = () => {
   })
 
   return (
-    <section className={style.wrapper}>
+    <section className="min-h-[calc(100vh-261px)] max-w-[1280px] mx-auto flex flex-col">
       <PageTitle title="explore deployed contracts" description="Contracts" />
       <div className="overflow-x-auto">
-        <table className={style.table}>
-          <thead className={style.thead}>
+        <table className="w-full text-left border-separate border-spacing-[1px]">
+          <thead className="uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800">
             <tr className="h-16">
               <th scope="col" className="px-4 font-normal w-24">
                 type
               </th>
               <th scope="col" className="px-4 font-normal whitespace-nowrap">
                 contract address
+              </th>
+              <th scope="col" className="px-4 font-normal w-28 text-center">
+                tier
               </th>
               <th scope="col" className="px-4 font-normal w-28 text-center">
                 abi
@@ -64,10 +55,10 @@ const Contracts = () => {
             {isMounted && isLoading ? (
               <>
                 {Array.from({ length: 6 }, (_, i) => (
-                  <tr className={style.contractSkeleton} key={i + 'tr'}>
-                    {Array.from({ length: 4 }, (_, i) => (
+                  <tr className="h-16 whitespace-nowrap bg-neutral-900/70" key={i + 'tr'}>
+                    {Array.from({ length: 5 }, (_, i) => (
                       <td className="px-4" key={i}>
-                        <div className={style.skeleton} />
+                        <div className="w-full h-4 bg-neutral-800 animate-pulse" />
                       </td>
                     ))}
                   </tr>
@@ -76,35 +67,43 @@ const Contracts = () => {
             ) : (
               isMounted &&
               data?.map((contract) => (
-                <tr key={contract._address} className={style.contract}>
-                  <td className="px-4 uppercase">{contractType[contract._type]}</td>
+                <tr
+                  key={contract.address_}
+                  className="h-16 whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150"
+                >
+                  <td className="px-4 uppercase">{standardValues[contract.standard]}</td>
                   <td className="px-4 w-full">
                     <a
-                      href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}`}
+                      href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract.address_}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={style.contractAddress}
+                      className="flex items-center text-neutral-400 hover:text-white ease-in duration-150"
                     >
-                      {contract._address}
+                      {contract.address_}
                       <ArrowUpRightIcon className="h-5 w-5" />
                     </a>
+                  </td>
+                  <td>
+                    <span className="flex items-center justify-center text-neutral-400 py-1 px-2 w-24 uppercase">
+                      {tierValues[contract.tier]}
+                    </span>
                   </td>
                   <td className="px-4 uppercase text-center">
                     <button
                       data-value="copy abi to clipboard"
-                      onClick={() => copy(contractAbi[contractType[contract._type]])}
-                      className={`${style.contractCopy} copy-tooltip`}
+                      onClick={() => copy(contractAbi[standardValues[contract.standard]][contract.tier])}
+                      className="text-neutral-400 hover:text-white ease-in duration-150 uppercase copy-tooltip"
                     >
                       copy
                     </button>
                   </td>
                   <td className="px-4 uppercase text-center">
                     <a
-                      href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract._address}#writeContract`}
+                      href={`${chain?.blockExplorers?.etherscan?.url}/address/${contract.address_}#writeContract`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="block explorer"
-                      className={style.contractWrite}
+                      className="flex items-center justify-center text-neutral-400 hover:text-white ease-in duration-150 uppercase"
                     >
                       <ArrowUpRightIcon className="h-5 w-5" />
                     </a>

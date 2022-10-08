@@ -46,6 +46,14 @@ To run this project, you will need to add the following environment variables to
 
 To run tests, run the following command
 
+Use `cypress:open` for an interactive UI
+
 ```bash
-  npm run cypress:open || npm run cypress:run
+  npm run cypress:open
+```
+
+Use `cypress:run` to run all cypress integration tests from the command line
+
+```bash
+  npm run cypress:run
 ```

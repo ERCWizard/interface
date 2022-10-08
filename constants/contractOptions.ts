@@ -1,15 +1,49 @@
-import { Contract } from 'enums'
+import { Standard, Tier } from 'enums'
+import { tierValues } from 'enums/Tier'
 
-export const contractOptions = [Contract.ERC721A, Contract.ERC1155]
+interface ContractOptions {
+  [standard: string]: {
+    tier: Tier[]
+  }
+}
 
-export const contractMetadata = {
-  [Contract.ERC721A]: {
-    description:
-      'ERC721A is an improved implementation of the ERC721 Non-Fungible Token Standard that supports minting multiple tokens for close to the cost of one',
-    tags: ['nft', 'custom', 'azuki'],
+interface ContractMetadata {
+  [standard: string]: {
+    [tier: number]: {
+      description: string
+      tags: string[]
+      tier: Tier | string
+    }
+  }
+}
+
+export const contractOptions: ContractOptions = {
+  [Standard.ERC721A]: {
+    tier: [Tier.basic, Tier.premium],
   },
-  [Contract.ERC1155]: {
-    description: 'ERC-1155 NFT smart contract',
-    tags: ['nft', 'basic'],
+  [Standard.ERC1155]: {
+    tier: [Tier.basic],
+  },
+}
+
+export const contractMetadata: ContractMetadata = {
+  [Standard.ERC721A]: {
+    [Tier.basic]: {
+      description: 'ERC721A is an improved implementation of the ERC721 Non-Fungible Token Standard',
+      tags: ['azuki', 'nft'],
+      tier: tierValues[Tier.basic],
+    },
+    [Tier.premium]: {
+      description: 'ERC721A is an improved implementation of the ERC721 Non-Fungible Token Standard',
+      tags: ['azuki', 'nft'],
+      tier: tierValues[Tier.premium],
+    },
+  },
+  [Standard.ERC1155]: {
+    [Tier.basic]: {
+      description: 'ERC-1155 NFT smart contract',
+      tags: ['nft'],
+      tier: tierValues[Tier.basic],
+    },
   },
 }

@@ -5,12 +5,7 @@ import { DiscordIcon, GitbookIcon } from 'assets'
 import { discordHref, ercWizardDocsHref } from 'constants/hrefs'
 
 const style = {
-  wrapper: `min-h-[calc(100vh-128px)] max-w-[1280px] mx-auto flex flex-col`,
-  description: `text-neutral-400 text-xs uppercase my-4`,
   support: `w-fit uppercase text-xs flex items-center text-neutral-400 p-2 hover:text-white hover:bg-neutral-900 cursor-pointer transition duration-200 ease-in-out`,
-  table: `w-full text-left border-separate border-spacing-[1px]`,
-  thead: `uppercase bg-neutral-900 text-neutral-400 border-b border-neutral-800`,
-  contract: `whitespace-nowrap bg-neutral-900 hover:bg-neutral-800 ease-in duration-150`,
 }
 
 const PageTitle = ({
@@ -38,7 +33,7 @@ const PageTitle = ({
         )}
       </div>
       <div className="flex items-center justify-between">
-        <p className={style.description}>{description}</p>
+        <p className="text-neutral-400 text-xs uppercase my-4">{description}</p>
         <div className="flex">
           <a href={ercWizardDocsHref} className={style.support}>
             <span>details</span>
