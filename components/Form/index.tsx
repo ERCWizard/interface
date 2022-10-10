@@ -121,6 +121,7 @@ const Form = ({ standard, tier }: { standard: string; tier: string }) => {
               minLength={input.minlength}
               maxLength={input.maxlength}
               autoComplete="off"
+              step={input.step}
               required={input.required}
               onChange={(e) => formHandler(e)}
               value={formState[input.name]}
