@@ -1,6 +1,14 @@
+import { motion } from 'framer-motion'
+
 const HowItWorks = () => {
   return (
-    <section className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ ease: 'easeIn', duration: 1 }}
+      className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24"
+    >
       <div className="flex flex-col items-center w-full gap-16 my-8">
         <div className="flex-1 text-center">
           <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">How it works</h2>
@@ -24,7 +32,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.div>
   )
 }
 

@@ -1,6 +1,7 @@
 import { TwitterIcon, DiscordIcon, GithubIcon } from 'assets'
 import { twitterHref, discordHref, githubHref } from 'constants/hrefs'
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { motion } from 'framer-motion'
 
 const socials = [
   {
@@ -25,7 +26,13 @@ const socials = [
 
 const Community = () => {
   return (
-    <section className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ ease: 'easeIn', duration: 1 }}
+      className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24"
+    >
       <div className="flex flex-col space-y-8 w-full">
         <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-medium font-Poppins">Community</h2>
         <p className="uppercase text-justify">ask questions, find answers, and share your experience with others.</p>
@@ -44,7 +51,7 @@ const Community = () => {
           </div>
         ))}
       </div>
-    </section>
+    </motion.div>
   )
 }
 
