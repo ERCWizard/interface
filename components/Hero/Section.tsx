@@ -6,7 +6,8 @@ import 'swiper/css/bundle'
 import 'swiper/css/effect-creative'
 import { wizardERC721, wizardERC1155 } from 'utils/codeSnippet'
 import { formatCode } from 'utils/formatCode'
-import { ArrowRightIcon, ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { CubeIcon, CodeBracketIcon, DocumentIcon } from '@heroicons/react/24/outline'
 
 export default function Section() {
   return (
@@ -16,21 +17,21 @@ export default function Section() {
           Create and Deploy Smart Contracts With No-Code
         </h1>
         <p className="uppercase text-justify">
-          erc wizard is a decentralized, open-source protocol for creating and deploying erc smart contracts without
-          writing a single line of code.
+          web3 — open-source protocol for creating and deploying erc smart contracts without writing a single line of
+          code.
         </p>
         <div className="uppercase space-y-2">
           <span className="flex items-center space-x-4">
-            <ArrowRightIcon className="h-4 w-4" />
-            <p>networks: polygon, mumbai</p>
+            <CodeBracketIcon className="h-4 w-4" />
+            <p>solidity</p>
           </span>
           <span className="flex items-center space-x-4">
-            <ArrowRightIcon className="h-4 w-4" />
-            <p>language: solidity</p>
+            <DocumentIcon className="h-4 w-4" />
+            <p>erc-721, erc-1155</p>
           </span>
           <span className="flex items-center space-x-4">
-            <ArrowRightIcon className="h-4 w-4" />
-            <p>contracts: erc-721, erc-1155</p>
+            <CubeIcon className="h-4 w-4" />
+            <p>polygon, mumbai</p>
           </span>
         </div>
         <Link href="/create">

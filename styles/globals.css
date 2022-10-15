@@ -23,6 +23,6 @@ input[type='range']::-webkit-slider-thumb {
   appearance: none;
   height: 1rem;
   cursor: ew-resize;
-  background: #fff;
+  background: rgb(163 163 163);
   border-radius: 0;
 }

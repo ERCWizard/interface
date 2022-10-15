@@ -110,7 +110,7 @@ const Form = ({ standard, tier }: { standard: string; tier: string }) => {
               id={input.name}
               className={
                 input.type === 'range'
-                  ? `block w-full h-2 appearance-none mr-4 transform duration-300 ${
+                  ? `block w-full h-4 mt-1 appearance-none mr-4 transform duration-300 ${
                       formState[input.name] > 2500 ? 'bg-red-500' : 'bg-neutral-700'
                     }`
                   : 'block w-full h-full text-white bg-transparent appearance-none focus:outline-none focus:ring-0 peer'
