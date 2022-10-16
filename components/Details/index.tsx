@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { deco } from 'assets'
-import { githubHref, discordHref } from 'constants/hrefs'
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid'
+import { githubHref } from 'constants/hrefs'
+import { ArrowUpRightIcon, AtSymbolIcon } from '@heroicons/react/20/solid'
 import { motion } from 'framer-motion'
 
 const Details = () => {
@@ -10,7 +10,7 @@ const Details = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ ease: 'easeIn', duration: 1 }}
+      transition={{ ease: 'easeIn', duration: 0.5 }}
       className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24"
     >
       <div className="flex lg:flex-row flex-col items-center w-full gap-16 my-8">
@@ -25,10 +25,11 @@ const Details = () => {
             open-source libraries like OpenZeppelin and Chainlink.
           </p>
           <div className="uppercase text-justify">
-            <span className="">looking for a more personalised smart contract? </span>
+            <span className="">looking for a more personalised smart contract?</span>
             <span>
-              <a className="underline" href={discordHref}>
-                get in touch
+              <a className="px-1 ml-1 underline" href="mailto: ercwizard@gmail.com">
+                <AtSymbolIcon className="h-4 w-4 inline-block mb-[2px]" />
+                get in touch.
               </a>
             </span>
           </div>

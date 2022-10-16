@@ -35,7 +35,7 @@ export const contractMetadata: ContractMetadata = {
     },
     [Tier.premium]: {
       description: 'ERC721A is an improved implementation of the ERC721 Non-Fungible Token Standard',
-      tags: ['azuki', 'nft'],
+      tags: ['azuki', 'nft', 'whitelist'],
       tier: tierValues[Tier.premium],
     },
   },

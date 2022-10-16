@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { WalletIcon, DocumentCheckIcon, PencilSquareIcon, DocumentArrowUpIcon } from '@heroicons/react/24/outline'
 
 const HowItWorks = () => {
   return (
@@ -6,7 +7,7 @@ const HowItWorks = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ ease: 'easeIn', duration: 1 }}
+      transition={{ ease: 'easeIn', duration: 0.5 }}
       className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24"
     >
       <div className="flex flex-col items-center w-full gap-16 my-8">
@@ -15,20 +16,20 @@ const HowItWorks = () => {
         </div>
         <div className="grid grid-cols-1 gap-y-8 md:grid-cols-2 gap-x-8 w-full uppercase text-center">
           <div className="p-4 bg-text border border-neutral-900 space-y-4">
-            <div className="border w-8 h-8 flex items-center justify-center m-auto">1</div>
-            <div>Connect your wallet</div>
+            <WalletIcon className="h-8 w-8 m-auto" />
+            <div>1. Connect your wallet</div>
           </div>
           <div className="p-4 bg-text border border-neutral-900 space-y-4">
-            <div className="border w-8 h-8 flex items-center justify-center m-auto">2</div>
-            <div>Select the contract</div>
+            <DocumentCheckIcon className="h-8 w-8 m-auto" />
+            <div>2. Select the contract</div>
           </div>
           <div className="p-4 bg-text border border-neutral-900 space-y-4">
-            <div className="border w-8 h-8 flex items-center justify-center m-auto">3</div>
-            <div>Fill in the details</div>
+            <PencilSquareIcon className="h-8 w-8 m-auto" />
+            <div>3. Fill in the details</div>
           </div>
           <div className="p-4 bg-text border border-neutral-900 space-y-4">
-            <div className="border w-8 h-8 flex items-center justify-center m-auto">4</div>
-            <div>Deploy the contract</div>
+            <DocumentArrowUpIcon className="h-8 w-8 m-auto" />
+            <div>4. Deploy the contract</div>
           </div>
         </div>
       </div>

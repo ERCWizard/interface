@@ -30,7 +30,7 @@ const Community = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ ease: 'easeIn', duration: 1 }}
+      transition={{ ease: 'easeIn', duration: 0.5 }}
       className="max-w-[1280px] mx-auto flex flex-col items-center justify-center mt-24"
     >
       <div className="flex flex-col space-y-8 w-full">

@@ -22,15 +22,15 @@ export default function Section() {
         </p>
         <div className="uppercase space-y-2">
           <span className="flex items-center space-x-4">
-            <CodeBracketIcon className="h-4 w-4" />
+            <CodeBracketIcon className="h-5 w-5" />
             <p>solidity</p>
           </span>
           <span className="flex items-center space-x-4">
-            <DocumentIcon className="h-4 w-4" />
+            <DocumentIcon className="h-5 w-5" />
             <p>erc-721, erc-1155</p>
           </span>
           <span className="flex items-center space-x-4">
-            <CubeIcon className="h-4 w-4" />
+            <CubeIcon className="h-5 w-5" />
             <p>polygon, mumbai</p>
           </span>
         </div>
